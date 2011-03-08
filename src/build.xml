@@ -1,0 +1,117 @@
+<project name="stringtree" default="cycle" basedir="..">
+	<property file="/opt/stringtree/conf/development.properties"/>
+	<property name="repository.location" value="../_repository"/>
+	<property file="src/project.prp"/>
+	<property file="src/relnum.prp"/>
+	<property name="version" value="${version.major}.${version.minor}.${version.step}"/>
+
+	<target name="clean" depends="synclibs">
+		<tstamp/>
+		<mkdir dir="build"/><delete dir="build"/>
+	</target>
+
+	<path id="classpath">
+		<pathelement location="build/main"/>
+		<pathelement location="build/test"/>
+		<pathelement location="resources"/>
+		<fileset dir="lib">
+			<include name="**/*.jar"/>
+		</fileset>
+		<pathelement path="${java.class.path}"/>
+	</path>
+	
+	<target name="synclibs">
+		<copy file="${repository.location}/jms.jar" todir="lib" failonerror="false"/>
+		<copy file="${repository.location}/junit.jar" todir="lib" failonerror="false"/>
+	</target>
+	
+	<target name="compile-main">
+	    <mkdir dir="build/main"/>
+		<javac srcdir="src/main/java" destdir="build/main" debug="on">
+			<classpath refid="classpath"/>
+		</javac>
+	</target>
+	
+	<target name="compile-test">
+	    <mkdir dir="build/test"/>
+		<javac srcdir="src/test/java" destdir="build/test" debug="on">
+			<classpath refid="classpath"/>
+		</javac>
+	</target>
+
+	<target name="compile" depends="compile-main,compile-test"/>
+	
+	<target name="test">
+		<echo message="running ant test in dir ${basedir}/testfiles"/>
+		<junit fork="yes" haltonfailure="yes" printsummary="yes" dir="${basedir}/testfiles">
+			<test name="tests.LocalTests"/>
+			<classpath refid="classpath"/>
+			<formatter type="plain"/>
+		</junit>
+	</target>
+	
+	<target name="dist" depends="clean,compile">
+		<mkdir dir="dist"/>
+		<antcall target="dist-subproject">
+			<param name="jar.name" value="${project.name}"/>
+			<param name="subset" value="**"/>
+		</antcall>
+		<antcall target="dist-subproject">
+			<param name="jar.name" value="stringtree-json"/>
+			<param name="subset" value="org/stringtree/json/**"/>
+		</antcall>
+		<antcall target="dist-subproject">
+			<param name="jar.name" value="stringtree-httpclient"/>
+			<param name="subset" value="org/stringtree/http/**"/>
+		</antcall>
+	</target>
+	
+	<target name="dist-subproject">
+	    <jar jarfile="dist/${jar.name}-${version}.jar" includes="${subset}" basedir="build/main"/>
+	    <copy file="dist/${jar.name}-${version}.jar" tofile="dist/${jar.name}.jar"/>
+	    <copy file="dist/${jar.name}-${version}.jar" todir="${repository.location}"/>
+	    <copy file="dist/${jar.name}.jar" todir="${repository.location}"/>
+	</target>
+
+    <target name="backup" depends="dist">
+	  <mkdir dir="dist"/>
+	  <zip destfile="${repository.location}/${project.name}-${DSTAMP}-${TSTAMP}.zip">
+	    <zipfileset dir=".">
+	      <exclude name="dist/**"/>
+	      <exclude name="bin/**"/>
+	    </zipfileset>
+	  </zip>
+	</target>
+
+	<target name="export-src" depends="clean">
+	    <zip destfile="dist/${project.name}-${version}-src.zip">
+	    	<zipfileset dir="src" prefix="${project.name}/src"/>
+	    	<zipfileset dir="testfiles" prefix="${project.name}/testfiles"/>
+	    	<zipfileset dir="resources" prefix="${project.name}/resources"/>
+		</zip>
+	    <copy file="dist/${project.name}-${version}-src.zip" tofile="dist/${project.name}-src.zip" overwrite="true"/>
+
+		<zip destfile="dist/${project.name}-${version}-sources.jar">
+	    	<zipfileset dir="src/main/java"/>
+		</zip>
+	    <copy file="dist/${project.name}-${version}-sources.jar" todir="${repository.location}" overwrite="true"/>
+	    <copy file="dist/${project.name}-${version}-sources.jar" tofile="${repository.location}/${project.name}-sources.zip" overwrite="true"/>
+	</target>
+	
+	
+  <target name="publish" depends="dist,export-src">
+  	<ftp server="${repository.server}" port="${repository.port}"
+         userid="${repository.userid}" password="${repository.password}"
+         remotedir="${repository.root}/org/stringtree/stringtree/${version}"
+  		 verbose="yes" depends="yes">
+      <fileset dir="dist">
+        <include name="${project.name}-${version}.jar"/>
+        <include name="${project.name}-*-${version}.jar"/>
+        <include name="${project.name}-${version}-sources.jar"/>
+  	  </fileset>
+    </ftp>
+  </target>
+
+  <target name="cycle" depends="dist, export-src"/>
+
+</project>

@@ -1,0 +1,27 @@
+# An example using the inheriting classic spec syntax but with 
+# side-effects on some transitions. Note the use of the Force, 
+# to, and Redirect effects to show how side effects can override 
+# the basic actions.
+
+$START 2
+
+ALL BACK _BACK
+ALL HAPPY 3				tests.workflow.ForceEffect
+ALL STAY _SELF
+
+1 = ALL
+1 HAPPY 3               tests.workflow.EchoEffect  hello world
+1 BOMB 3				tests.workflow.ForceEffect
+1 RESET _RESET
+
+2 = ALL
+2 SAD 1
+2 BORED _SELF
+2 BACKDOOR 1            tests.workflow.VetoEffect
+2 BOUNCE 3              tests.workflow.RedirectEffect SAD
+
+3 = ALL
+3 COMPLETE _EXIT
+3 PLOP UGH
+
+		

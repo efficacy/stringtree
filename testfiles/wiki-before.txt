@@ -1,0 +1,117 @@
+This installation of Friki uses "classic" formatting.
+
+In this style page formatting is based on the style used in the "original" Wiki
+described at Wiki:TextFormattingRules.
+
+Text is mostly displayed as you have typed it. To prevent problems with rendering
+HTML, important characters such as '<'. '>, and '&' are "escaped".  HTML normally
+joins lines and wraps the result, so to start a new paragraph, you need to put a
+blank line (which will be converted to a <p> tag).  "Classic" markup also adds ways
+to indicate ''emphasis'', '''strong emphasis''', and so on.
+
+The thing that makes this a "Wiki", and not just a collection of editable pages
+is the ability to create "links" between pages.  In the "classic" formatting, a link
+is identified by creating  a "W''''''ikiWord"; placing two or more initial-capitalised
+words together (eg. FrontPage).  If the page exists, you'll see a link to it, if it
+doesn't exist yet, you'll see the name followed by a '?', which you can click to create
+the page.
+
+The rules are described in more detail below:
+
+----
+
+'''Emphasis'''
+
+	* Use doubled single-quotes ('') for emphasis (usually italics)
+	* Use tripled single-quotes (''') for strong emphasis (usually bold)
+	* Emphasis can be used multiple times within a line, but cannot span across line boundaries
+
+'''References'''
+
+	* J''''''oinCapitalizedWords to make references to other pages on this Wiki.
+	* Precede URLs with "http:", "ftp:", "gopher:", "mailto:", or "news:" to create links automatically as in: http://www.efsol.com/
+	* URLs of objects ending with .gif, .jpg, .jpeg or .png are inlined as images.
+	* Refer to pages on other Wikis using "interwiki" syntax as described at MeatBall:InterMap
+	* Use Six Single Quotes to A''''''voidMakingReferencesToOtherPagesOnThisWiki, or separate suffixes (like 's') (eg. FrontPage''''''s).
+	* ISBN: 0-13-748310-4 links to a bookseller. (The pattern is: "ISBN", optional colon, space, ten digits with optional hyphens, the whole thing optionally in square brackets. The last digit can be an "X".) We are an Amazon Associate.
+	* I S B N: 0123456789 becomes ISBN: 0123456789
+	* [I S B N 0123456789] becomes [ISBN 0123456789]
+	* [I S B N: 123-456-789-X] becomes [ISBN: 123-456-789-X]
+
+'''Horizontal Lines'''
+
+	* Four or more hyphens at the beginning of a line make a horizontal rule
+	
+'''Bullets or Numbered Lists'''
+
+	* One line for each item
+	* '''tab''' '''*''' (or 8 spaces and '''*'''), for first level
+	* '''tab''' '''tab''' '''*''' for second level, etc.
+	* Use * for bullet lists, 1. for numbered lists (mix at will) -- always use 1., it will be renumbered automagically.
+	
+'''Definition Lists'''
+
+	* '''tab''' ''term'' colon '''tab''' ''Definition'', for example:
+
+	first term:	This is first definition.	
+	second term:	This is the second definition.
+
+'''Fonts'''
+
+	* Indent with one or more spaces to use a monospace font:
+
+ This is text in a monospaced font.
+   This is indented with three spaces.
+This is not.
+
+Notice that there is a MonospaceIndentationProblem.
+
+'''Indented Paragraphs'''
+''(Quotes)''
+
+	* '''tab''' '''space''' : '''tab''' may be used (often with emphasis) for quotations.
+
+Sample:
+	 :	This is quoted.
+This isn't.
+
+	
+'''Preformatted Blocks'''
+
+	* A line ending with '[' starts a preformatted block, which runs up to the next line which starts with ']'.  Within a preformatted block Wiki''''''Words, lists, quotes, tables etc. have no significance, and indentation is preserved.  Typically preformatted blocks are used for source code examples, or other complex text.
+
+'''Tables'''
+
+This Wiki implements Ward Cunningham's table syntax introduced for his Wiki at http://fit.c2.com/, but not yet propagated back to the original Wiki.
+
+	* Any line starting and ending with | (with optional trailing whitespace) will appear as a table.
+	* Separate columns with |
+	* Empty cells are merged with adjacent cells to form single spanning cells.
+	* If you really want an empty cell, put six-single-quotes in it, and it will show as empty.
+	* You can put preformatted blocks in table cells using |[ and ]|
+	
+|''''''    |Example Table|          ||
+|'''type'''|with |spanning|header    |
+|'''cols'''| and |several| columns  |
+
+|BlockTransform.java|
+|[
+package com.efsol.friki.transform;
+
+import com.efsol.friki.*;
+
+public class BlockTransform extends DynamicTransform
+{
+	private Transformer tx;
+	private String URL="http://www.efsol.com/"
+
+	public BlockTransform()
+	{
+		super("\\[" + newLinePattern + "((?:[^\\n\\r]*" + newLinePattern + ")+)" + "\\]");
+
+		tx = new Transformer();
+		tx.addTransform(newLinePattern, "<br>");
+		tx.addTransform("\\|", "\\\\|");
+	}
+}
+]|

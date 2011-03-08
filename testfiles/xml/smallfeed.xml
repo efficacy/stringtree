@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- generator="wordpress/1.5.2" -->
+<rss version="2.0" 
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+>
+
+<channel>
+	<title>blog.stringtree.org</title>
+	<link>http://blog.stringtree.org</link>
+	<description>Stringtree Development News</description>
+	<pubDate>Thu, 31 Jan 2008 13:29:36 +0000</pubDate>
+	<generator>http://wordpress.org/?v=1.5.2</generator>
+	<language>en</language>
+
+		<item>
+		<title>Slight Improvement to Stringtree XML Parser</title>
+		<link>http://blog.stringtree.org/2008/01/31/slight-improvement-to-stringtree-xml-parser/</link>
+		<comments>http://blog.stringtree.org/2008/01/31/slight-improvement-to-stringtree-xml-parser/#comments</comments>
+		<pubDate>Thu, 31 Jan 2008 13:29:08 +0000</pubDate>
+		<dc:creator>Stringtree</dc:creator>
+		
+	<category>Projects</category>
+		<guid>http://blog.stringtree.org/2008/01/31/slight-improvement-to-stringtree-xml-parser/</guid>
+		<description><![CDATA[	Someone just pointed out that the light-weight XML parser included in Stringtree did not handle explicit CDATA blocks. The version in SVN now has provisional support for this.
+	If you need a simple and fast parser for textual data, then this should be all you need. For XML documents containing opaque binary data in a CDATA [...]]]></description>
+			<content:encoded><![CDATA[	<p>Someone just pointed out that the light-weight <a href="http://stringtree.svn.sourceforge.net/svnroot/stringtree/trunk/src/delivery/java/org/stringtree/xml/XMLReader.java">XML parser</a> included in Stringtree did not handle explicit CDATA blocks. The version in SVN now has provisional support for this.</p>
+	<p>If you need a simple and fast parser for textual data, then this should be all you need. For XML documents containing opaque binary data in a CDATA block, this may not be ideal. Currently CDATA blocks are loaded as String objects, and this can lead to incorrect data for bytes which do not represent valid characters in the current character set.</p>
+	<p>I am currently planning for the next version of the Stringtree XMLReader to offer the option of extracting a CDATA block as an unprocessed byte array.
+</p>
+]]></content:encoded>
+			<wfw:commentRSS>http://blog.stringtree.org/2008/01/31/slight-improvement-to-stringtree-xml-parser/feed/</wfw:commentRSS>
+	</item>
+	</channel>
+</rss>

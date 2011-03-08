@@ -1,0 +1,21 @@
+# basic state machine using the classic spec syntax, 
+# all transitions explicit, no inheritance, no side effects
+# useful for screen flows with limited options etc.
+
+$START 2
+
+1 HAPPY 3
+1 BACK _BACK
+1 RESET _RESET
+1 STAY 1
+
+2 SAD 1
+2 BORED _SELF
+2 BACK _BACK
+2 STAY 2
+
+3 COMPLETE _EXIT
+3 BACK _BACK 
+3 PLOP UGH
+3 STAY 3
+		

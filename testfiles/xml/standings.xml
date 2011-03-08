@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<STANDING league_abbr="MLB">
+<TITLE>MLB Standing</TITLE>
+<CONF_STAND conf_abbr="AL">
+<TITLE>American League</TITLE>
+<DIV_STAND div_abbr="EAST">
+<TITLE>East</TITLE>
+<TEAM_STAND>
+
+<TEAM_ROW team_abbr="BOS" wildcard="Y" tiebreaker="" eliminated="" magic="" clinch="" wins="1" losses="1" gb="0" wildcard_rank="1" confwins="1" conflosses="1" divwins="0" divlosses="0" homewins="0" homelosses="0" awaywins="1" awaylosses="1" last10wins="1" last10losses="1" onerunwins="1" onerunlosses="0" extrawins="1" extralosses="0" streak="-1">
+<TEAM_DIV_STAND div_abbr="east" wins="0" losses="0"/>
+<TEAM_DIV_STAND div_abbr="central" wins="0" losses="0"/>
+<TEAM_DIV_STAND div_abbr="west" wins="1" losses="1"/>
+</TEAM_ROW>
+<TEAM_ROW team_abbr="TB" wildcard="Y" tiebreaker="" eliminated="" magic="" clinch="" wins="0" losses="0" gb="0" wildcard_rank="7" confwins="0" conflosses="0" divwins="0" divlosses="0" homewins="0" homelosses="0" awaywins="0" awaylosses="0" last10wins="0" last10losses="0" onerunwins="0" onerunlosses="0" extrawins="0" extralosses="0" streak="0">
+<TEAM_DIV_STAND div_abbr="east" wins="0" losses="0"/>
+<TEAM_DIV_STAND div_abbr="central" wins="0" losses="0"/>
+<TEAM_DIV_STAND div_abbr="west" wins="0" losses="0"/>
+</TEAM_ROW>
+<TEAM_ROW team_abbr="TOR" wildcard="Y" tiebreaker="" eliminated="" magic="" clinch="" wins="0" losses="0" gb="0" wildcard_rank="4" confwins="0" conflosses="0" divwins="0" divlosses="0" homewins="0" homelosses="0" awaywins="0" awaylosses="0" last10wins="0" last10losses="0" onerunwins="0" onerunlosses="0" extrawins="0" extralosses="0" streak="0">
+<TEAM_DIV_STAND div_abbr="east" wins="0" losses="0"/>
+<TEAM_DIV_STAND div_abbr="central" wins="0" losses="0"/>
+<TEAM_DIV_STAND div_abbr="west" wins="0" losses="0"/>
+</TEAM_ROW>
+<TEAM_ROW team_abbr="BAL" wildcard="Y" tiebreaker="" eliminated="" magic="" clinch="" wins="0" losses="0" gb="0" wildcard_rank="0" confwins="0" conflosses="0" divwins="0" divlosses="0" homewins="0" homelosses="0" awaywins="0" awaylosses="0" last10wins="0" last10losses="0" onerunwins="0" onerunlosses="0" extrawins="0" extralosses="0" streak="0">
+<TEAM_DIV_STAND div_abbr="east" wins="0" losses="0"/>
+<TEAM_DIV_STAND div_abbr="central" wins="0" losses="0"/>
+<TEAM_DIV_STAND div_abbr="west" wins="0" losses="0"/>
+</TEAM_ROW>
+<TEAM_ROW team_abbr="NYY" wildcard="Y" tiebreaker="" eliminated="" magic="" clinch="" wins="0" losses="0" gb="0" wildcard_rank="3" confwins="0" conflosses="0" divwins="0" divlosses="0" homewins="0" homelosses="0" awaywins="0" awaylosses="0" last10wins="0" last10losses="0" onerunwins="0" onerunlosses="0" extrawins="0" extralosses="0" streak="0">
+<TEAM_DIV_STAND div_abbr="east" wins="0" losses="0"/>
+<TEAM_DIV_STAND div_abbr="central" wins="0" losses="0"/>
+<TEAM_DIV_STAND div_abbr="west" wins="0" losses="0"/>
+</TEAM_ROW>
+
+</TEAM_STAND>
+</DIV_STAND>
+<DIV_STAND div_abbr="CENT">
+<TITLE>Central</TITLE>
+<TEAM_STAND>
+
+<TEAM_ROW team_abbr="MIN" wildcard="Y" tiebreaker="" eliminated="" magic="" clinch="" wins="0" losses="0" gb="0" wildcard_rank="10" confwins="0" conflosses="0" divwins="0" divlosses="0" homewins="0" homelosses="0" awaywins="0" awaylosses="0" last10wins="0" last10losses="0" onerunwins="0" onerunlosses="0" extrawins="0" extralosses="0" streak="0">
+<TEAM_DIV_STAND div_abbr="east" wins="0" losses="0"/>
+<TEAM_DIV_STAND div_abbr="central" wins="0" losses="0"/>
+<TEAM_DIV_STAND div_abbr="west" wins="0" losses="0"/>
+</TEAM_ROW>
+<TEAM_ROW team_abbr="KC" wildcard="Y" tiebreaker="" eliminated="" magic="" clinch="" wins="0" losses="0" gb="0" wildcard_rank="11" confwins="0" conflosses="0" divwins="0" divlosses="0" homewins="0" homelosses="0" awaywins="0" awaylosses="0" last10wins="0" last10losses="0" onerunwins="0" onerunlosses="0" extrawins="0" extralosses="0" streak="0">
+<TEAM_DIV_STAND div_abbr="east" wins="0" losses="0"/>
+<TEAM_DIV_STAND div_abbr="central" wins="0" losses="0"/>
+<TEAM_DIV_STAND div_abbr="west" wins="0" losses="0"/>
+</TEAM_ROW>
+<TEAM_ROW team_abbr="CLE" wildcard="Y" tiebreaker="" eliminated="" magic="" clinch="" wins="0" losses="0" gb="0" wildcard_rank="6" confwins="0" conflosses="0" divwins="0" divlosses="0" homewins="0" homelosses="0" awaywins="0" awaylosses="0" last10wins="0" last10losses="0" onerunwins="0" onerunlosses="0" extrawins="0" extralosses="0" streak="0">
+<TEAM_DIV_STAND div_abbr="east" wins="0" losses="0"/>
+<TEAM_DIV_STAND div_abbr="central" wins="0" losses="0"/>
+<TEAM_DIV_STAND div_abbr="west" wins="0" losses="0"/>
+</TEAM_ROW>
+<TEAM_ROW team_abbr="CHW" wildcard="Y" tiebreaker="" eliminated="" magic="" clinch="" wins="0" losses="0" gb="0" wildcard_rank="0" confwins="0" conflosses="0" divwins="0" divlosses="0" homewins="0" homelosses="0" awaywins="0" awaylosses="0" last10wins="0" last10losses="0" onerunwins="0" onerunlosses="0" extrawins="0" extralosses="0" streak="0">
+<TEAM_DIV_STAND div_abbr="east" wins="0" losses="0"/>
+<TEAM_DIV_STAND div_abbr="central" wins="0" losses="0"/>
+<TEAM_DIV_STAND div_abbr="west" wins="0" losses="0"/>
+</TEAM_ROW>
+<TEAM_ROW team_abbr="DET" wildcard="Y" tiebreaker="" eliminated="" magic="" clinch="" wins="0" losses="0" gb="0" wildcard_rank="5" confwins="0" conflosses="0" divwins="0" divlosses="0" homewins="0" homelosses="0" awaywins="0" awaylosses="0" last10wins="0" last10losses="0" onerunwins="0" onerunlosses="0" extrawins="0" extralosses="0" streak="0">
+<TEAM_DIV_STAND div_abbr="east" wins="0" losses="0"/>
+<TEAM_DIV_STAND div_abbr="central" wins="0" losses="0"/>
+<TEAM_DIV_STAND div_abbr="west" wins="0" losses="0"/>
+</TEAM_ROW>
+
+</TEAM_STAND>
+</DIV_STAND>
+<DIV_STAND div_abbr="WEST">
+<TITLE>West</TITLE>
+<TEAM_STAND>
+
+<TEAM_ROW team_abbr="OAK" wildcard="Y" tiebreaker="" eliminated="" magic="" clinch="" wins="1" losses="1" gb="0" wildcard_rank="2" confwins="1" conflosses="1" divwins="0" divlosses="0" homewins="1" homelosses="1" awaywins="0" awaylosses="0" last10wins="1" last10losses="1" onerunwins="0" onerunlosses="1" extrawins="0" extralosses="1" streak="+1">
+<TEAM_DIV_STAND div_abbr="east" wins="1" losses="1"/>
+<TEAM_DIV_STAND div_abbr="central" wins="0" losses="0"/>
+<TEAM_DIV_STAND div_abbr="west" wins="0" losses="0"/>
+</TEAM_ROW>
+<TEAM_ROW team_abbr="TEX" wildcard="Y" tiebreaker="" eliminated="" magic="" clinch="" wins="0" losses="0" gb="0" wildcard_rank="9" confwins="0" conflosses="0" divwins="0" divlosses="0" homewins="0" homelosses="0" awaywins="0" awaylosses="0" last10wins="0" last10losses="0" onerunwins="0" onerunlosses="0" extrawins="0" extralosses="0" streak="0">
+<TEAM_DIV_STAND div_abbr="east" wins="0" losses="0"/>
+<TEAM_DIV_STAND div_abbr="central" wins="0" losses="0"/>
+<TEAM_DIV_STAND div_abbr="west" wins="0" losses="0"/>
+</TEAM_ROW>
+<TEAM_ROW team_abbr="SEA" wildcard="Y" tiebreaker="" eliminated="" magic="" clinch="" wins="0" losses="0" gb="0" wildcard_rank="8" confwins="0" conflosses="0" divwins="0" divlosses="0" homewins="0" homelosses="0" awaywins="0" awaylosses="0" last10wins="0" last10losses="0" onerunwins="0" onerunlosses="0" extrawins="0" extralosses="0" streak="0">
+<TEAM_DIV_STAND div_abbr="east" wins="0" losses="0"/>
+<TEAM_DIV_STAND div_abbr="central" wins="0" losses="0"/>
+<TEAM_DIV_STAND div_abbr="west" wins="0" losses="0"/>
+</TEAM_ROW>
+<TEAM_ROW team_abbr="ANA" wildcard="Y" tiebreaker="" eliminated="" magic="" clinch="" wins="0" losses="0" gb="0" wildcard_rank="0" confwins="0" conflosses="0" divwins="0" divlosses="0" homewins="0" homelosses="0" awaywins="0" awaylosses="0" last10wins="0" last10losses="0" onerunwins="0" onerunlosses="0" extrawins="0" extralosses="0" streak="0">
+<TEAM_DIV_STAND div_abbr="east" wins="0" losses="0"/>
+<TEAM_DIV_STAND div_abbr="central" wins="0" losses="0"/>
+<TEAM_DIV_STAND div_abbr="west" wins="0" losses="0"/>
+</TEAM_ROW>
+
+</TEAM_STAND>
+</DIV_STAND>
+
+</CONF_STAND><CONF_STAND conf_abbr="NL">
+<TITLE>National League</TITLE>
+<DIV_STAND div_abbr="EAST">
+<TITLE>East</TITLE>
+<TEAM_STAND>
+
+<TEAM_ROW team_abbr="WAS" wildcard="Y" tiebreaker="" eliminated="" magic="" clinch="" wins="0" losses="0" gb="0" wildcard_rank="3" confwins="0" conflosses="0" divwins="0" divlosses="0" homewins="0" homelosses="0" awaywins="0" awaylosses="0" last10wins="0" last10losses="0" onerunwins="0" onerunlosses="0" extrawins="0" extralosses="0" streak="0">
+<TEAM_DIV_STAND div_abbr="east" wins="0" losses="0"/>
+<TEAM_DIV_STAND div_abbr="central" wins="0" losses="0"/>
+<TEAM_DIV_STAND div_abbr="west" wins="0" losses="0"/>
+</TEAM_ROW>
+<TEAM_ROW team_abbr="PHI" wildcard="Y" tiebreaker="" eliminated="" magic="" clinch="" wins="0" losses="0" gb="0" wildcard_rank="4" confwins="0" conflosses="0" divwins="0" divlosses="0" homewins="0" homelosses="0" awaywins="0" awaylosses="0" last10wins="0" last10losses="0" onerunwins="0" onerunlosses="0" extrawins="0" extralosses="0" streak="0">
+<TEAM_DIV_STAND div_abbr="east" wins="0" losses="0"/>
+<TEAM_DIV_STAND div_abbr="central" wins="0" losses="0"/>
+<TEAM_DIV_STAND div_abbr="west" wins="0" losses="0"/>
+</TEAM_ROW>
+<TEAM_ROW team_abbr="FLA" wildcard="Y" tiebreaker="" eliminated="" magic="" clinch="" wins="0" losses="0" gb="0" wildcard_rank="1" confwins="0" conflosses="0" divwins="0" divlosses="0" homewins="0" homelosses="0" awaywins="0" awaylosses="0" last10wins="0" last10losses="0" onerunwins="0" onerunlosses="0" extrawins="0" extralosses="0" streak="0">
+<TEAM_DIV_STAND div_abbr="east" wins="0" losses="0"/>
+<TEAM_DIV_STAND div_abbr="central" wins="0" losses="0"/>
+<TEAM_DIV_STAND div_abbr="west" wins="0" losses="0"/>
+</TEAM_ROW>
+<TEAM_ROW team_abbr="ATL" wildcard="Y" tiebreaker="" eliminated="" magic="" clinch="" wins="0" losses="0" gb="0" wildcard_rank="0" confwins="0" conflosses="0" divwins="0" divlosses="0" homewins="0" homelosses="0" awaywins="0" awaylosses="0" last10wins="0" last10losses="0" onerunwins="0" onerunlosses="0" extrawins="0" extralosses="0" streak="0">
+<TEAM_DIV_STAND div_abbr="east" wins="0" losses="0"/>
+<TEAM_DIV_STAND div_abbr="central" wins="0" losses="0"/>
+<TEAM_DIV_STAND div_abbr="west" wins="0" losses="0"/>
+</TEAM_ROW>
+<TEAM_ROW team_abbr="NYM" wildcard="Y" tiebreaker="" eliminated="" magic="" clinch="" wins="0" losses="0" gb="0" wildcard_rank="2" confwins="0" conflosses="0" divwins="0" divlosses="0" homewins="0" homelosses="0" awaywins="0" awaylosses="0" last10wins="0" last10losses="0" onerunwins="0" onerunlosses="0" extrawins="0" extralosses="0" streak="0">
+<TEAM_DIV_STAND div_abbr="east" wins="0" losses="0"/>
+<TEAM_DIV_STAND div_abbr="central" wins="0" losses="0"/>
+<TEAM_DIV_STAND div_abbr="west" wins="0" losses="0"/>
+</TEAM_ROW>
+
+</TEAM_STAND>
+</DIV_STAND>
+<DIV_STAND div_abbr="CENT">
+<TITLE>Central</TITLE>
+<TEAM_STAND>
+
+<TEAM_ROW team_abbr="STL" wildcard="Y" tiebreaker="" eliminated="" magic="" clinch="" wins="0" losses="0" gb="0" wildcard_rank="12" confwins="0" conflosses="0" divwins="0" divlosses="0" homewins="0" homelosses="0" awaywins="0" awaylosses="0" last10wins="0" last10losses="0" onerunwins="0" onerunlosses="0" extrawins="0" extralosses="0" streak="0">
+<TEAM_DIV_STAND div_abbr="east" wins="0" losses="0"/>
+<TEAM_DIV_STAND div_abbr="central" wins="0" losses="0"/>
+<TEAM_DIV_STAND div_abbr="west" wins="0" losses="0"/>
+</TEAM_ROW>
+<TEAM_ROW team_abbr="HOU" wildcard="Y" tiebreaker="" eliminated="" magic="" clinch="" wins="0" losses="0" gb="0" wildcard_rank="5" confwins="0" conflosses="0" divwins="0" divlosses="0" homewins="0" homelosses="0" awaywins="0" awaylosses="0" last10wins="0" last10losses="0" onerunwins="0" onerunlosses="0" extrawins="0" extralosses="0" streak="0">
+<TEAM_DIV_STAND div_abbr="east" wins="0" losses="0"/>
+<TEAM_DIV_STAND div_abbr="central" wins="0" losses="0"/>
+<TEAM_DIV_STAND div_abbr="west" wins="0" losses="0"/>
+</TEAM_ROW>
+<TEAM_ROW team_abbr="PIT" wildcard="Y" tiebreaker="" eliminated="" magic="" clinch="" wins="0" losses="0" gb="0" wildcard_rank="13" confwins="0" conflosses="0" divwins="0" divlosses="0" homewins="0" homelosses="0" awaywins="0" awaylosses="0" last10wins="0" last10losses="0" onerunwins="0" onerunlosses="0" extrawins="0" extralosses="0" streak="0">
+<TEAM_DIV_STAND div_abbr="east" wins="0" losses="0"/>
+<TEAM_DIV_STAND div_abbr="central" wins="0" losses="0"/>
+<TEAM_DIV_STAND div_abbr="west" wins="0" losses="0"/>
+</TEAM_ROW>
+<TEAM_ROW team_abbr="CHC" wildcard="Y" tiebreaker="" eliminated="" magic="" clinch="" wins="0" losses="0" gb="0" wildcard_rank="7" confwins="0" conflosses="0" divwins="0" divlosses="0" homewins="0" homelosses="0" awaywins="0" awaylosses="0" last10wins="0" last10losses="0" onerunwins="0" onerunlosses="0" extrawins="0" extralosses="0" streak="0">
+<TEAM_DIV_STAND div_abbr="east" wins="0" losses="0"/>
+<TEAM_DIV_STAND div_abbr="central" wins="0" losses="0"/>
+<TEAM_DIV_STAND div_abbr="west" wins="0" losses="0"/>
+</TEAM_ROW>
+<TEAM_ROW team_abbr="MIL" wildcard="Y" tiebreaker="" eliminated="" magic="" clinch="" wins="0" losses="0" gb="0" wildcard_rank="0" confwins="0" conflosses="0" divwins="0" divlosses="0" homewins="0" homelosses="0" awaywins="0" awaylosses="0" last10wins="0" last10losses="0" onerunwins="0" onerunlosses="0" extrawins="0" extralosses="0" streak="0">
+<TEAM_DIV_STAND div_abbr="east" wins="0" losses="0"/>
+<TEAM_DIV_STAND div_abbr="central" wins="0" losses="0"/>
+<TEAM_DIV_STAND div_abbr="west" wins="0" losses="0"/>
+</TEAM_ROW>
+<TEAM_ROW team_abbr="CIN" wildcard="Y" tiebreaker="" eliminated="" magic="" clinch="" wins="0" losses="0" gb="0" wildcard_rank="6" confwins="0" conflosses="0" divwins="0" divlosses="0" homewins="0" homelosses="0" awaywins="0" awaylosses="0" last10wins="0" last10losses="0" onerunwins="0" onerunlosses="0" extrawins="0" extralosses="0" streak="0">
+<TEAM_DIV_STAND div_abbr="east" wins="0" losses="0"/>
+<TEAM_DIV_STAND div_abbr="central" wins="0" losses="0"/>
+<TEAM_DIV_STAND div_abbr="west" wins="0" losses="0"/>
+</TEAM_ROW>
+
+</TEAM_STAND>
+</DIV_STAND>
+<DIV_STAND div_abbr="WEST">
+<TITLE>West</TITLE>
+<TEAM_STAND>
+
+<TEAM_ROW team_abbr="SD" wildcard="Y" tiebreaker="2" eliminated="" magic="" clinch="" wins="0" losses="0" gb="0" wildcard_rank="8" confwins="0" conflosses="0" divwins="0" divlosses="0" homewins="0" homelosses="0" awaywins="0" awaylosses="0" last10wins="0" last10losses="0" onerunwins="0" onerunlosses="0" extrawins="0" extralosses="0" streak="0">
+<TEAM_DIV_STAND div_abbr="east" wins="0" losses="0"/>
+<TEAM_DIV_STAND div_abbr="central" wins="0" losses="0"/>
+<TEAM_DIV_STAND div_abbr="west" wins="0" losses="0"/>
+</TEAM_ROW>
+<TEAM_ROW team_abbr="LA" wildcard="Y" tiebreaker="1" eliminated="" magic="" clinch="" wins="0" losses="0" gb="0" wildcard_rank="11" confwins="0" conflosses="0" divwins="0" divlosses="0" homewins="0" homelosses="0" awaywins="0" awaylosses="0" last10wins="0" last10losses="0" onerunwins="0" onerunlosses="0" extrawins="0" extralosses="0" streak="0">
+<TEAM_DIV_STAND div_abbr="east" wins="0" losses="0"/>
+<TEAM_DIV_STAND div_abbr="central" wins="0" losses="0"/>
+<TEAM_DIV_STAND div_abbr="west" wins="0" losses="0"/>
+</TEAM_ROW>
+<TEAM_ROW team_abbr="ARI" wildcard="Y" tiebreaker="" eliminated="" magic="" clinch="" wins="0" losses="0" gb="0" wildcard_rank="10" confwins="0" conflosses="0" divwins="0" divlosses="0" homewins="0" homelosses="0" awaywins="0" awaylosses="0" last10wins="0" last10losses="0" onerunwins="0" onerunlosses="0" extrawins="0" extralosses="0" streak="0">
+<TEAM_DIV_STAND div_abbr="east" wins="0" losses="0"/>
+<TEAM_DIV_STAND div_abbr="central" wins="0" losses="0"/>
+<TEAM_DIV_STAND div_abbr="west" wins="0" losses="0"/>
+</TEAM_ROW>
+<TEAM_ROW team_abbr="SF" wildcard="Y" tiebreaker="" eliminated="" magic="" clinch="" wins="0" losses="0" gb="0" wildcard_rank="9" confwins="0" conflosses="0" divwins="0" divlosses="0" homewins="0" homelosses="0" awaywins="0" awaylosses="0" last10wins="0" last10losses="0" onerunwins="0" onerunlosses="0" extrawins="0" extralosses="0" streak="0">
+<TEAM_DIV_STAND div_abbr="east" wins="0" losses="0"/>
+<TEAM_DIV_STAND div_abbr="central" wins="0" losses="0"/>
+<TEAM_DIV_STAND div_abbr="west" wins="0" losses="0"/>
+</TEAM_ROW>
+<TEAM_ROW team_abbr="COL" wildcard="Y" tiebreaker="" eliminated="" magic="" clinch="" wins="0" losses="0" gb="0" wildcard_rank="0" confwins="0" conflosses="0" divwins="0" divlosses="0" homewins="0" homelosses="0" awaywins="0" awaylosses="0" last10wins="0" last10losses="0" onerunwins="0" onerunlosses="0" extrawins="0" extralosses="0" streak="0">
+<TEAM_DIV_STAND div_abbr="east" wins="0" losses="0"/>
+<TEAM_DIV_STAND div_abbr="central" wins="0" losses="0"/>
+<TEAM_DIV_STAND div_abbr="west" wins="0" losses="0"/>
+</TEAM_ROW>
+
+</TEAM_STAND>
+</DIV_STAND>
+
+</CONF_STAND></STANDING>

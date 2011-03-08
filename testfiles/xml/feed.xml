@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- generator="wordpress/1.5.2" -->
+<rss version="2.0" 
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+>
+
+<channel>
+	<title>blog.stringtree.org</title>
+	<link>http://blog.stringtree.org</link>
+	<description>Stringtree Development News</description>
+	<pubDate>Thu, 31 Jan 2008 13:29:36 +0000</pubDate>
+	<generator>http://wordpress.org/?v=1.5.2</generator>
+	<language>en</language>
+
+		<item>
+		<title>Slight Improvement to Stringtree XML Parser</title>
+		<link>http://blog.stringtree.org/2008/01/31/slight-improvement-to-stringtree-xml-parser/</link>
+		<comments>http://blog.stringtree.org/2008/01/31/slight-improvement-to-stringtree-xml-parser/#comments</comments>
+		<pubDate>Thu, 31 Jan 2008 13:29:08 +0000</pubDate>
+		<dc:creator>Stringtree</dc:creator>
+		
+	<category>Projects</category>
+		<guid>http://blog.stringtree.org/2008/01/31/slight-improvement-to-stringtree-xml-parser/</guid>
+		<description><![CDATA[	Someone just pointed out that the light-weight XML parser included in Stringtree did not handle explicit CDATA blocks. The version in SVN now has provisional support for this.
+	If you need a simple and fast parser for textual data, then this should be all you need. For XML documents containing opaque binary data in a CDATA [...]]]></description>
+			<content:encoded><![CDATA[	<p>Someone just pointed out that the light-weight <a href="http://stringtree.svn.sourceforge.net/svnroot/stringtree/trunk/src/delivery/java/org/stringtree/xml/XMLReader.java">XML parser</a> included in Stringtree did not handle explicit CDATA blocks. The version in SVN now has provisional support for this.</p>
+	<p>If you need a simple and fast parser for textual data, then this should be all you need. For XML documents containing opaque binary data in a CDATA block, this may not be ideal. Currently CDATA blocks are loaded as String objects, and this can lead to incorrect data for bytes which do not represent valid characters in the current character set.</p>
+	<p>I am currently planning for the next version of the Stringtree XMLReader to offer the option of extracting a CDATA block as an unprocessed byte array.
+</p>
+]]></content:encoded>
+			<wfw:commentRSS>http://blog.stringtree.org/2008/01/31/slight-improvement-to-stringtree-xml-parser/feed/</wfw:commentRSS>
+	</item>
+		<item>
+		<title>Stringtree Maven Repository</title>
+		<link>http://blog.stringtree.org/2008/01/07/stringtree-maven-repository/</link>
+		<comments>http://blog.stringtree.org/2008/01/07/stringtree-maven-repository/#comments</comments>
+		<pubDate>Mon, 07 Jan 2008 11:48:12 +0000</pubDate>
+		<dc:creator>Stringtree</dc:creator>
+		
+	<category>General</category>
+	<category>Projects</category>
+		<guid>http://blog.stringtree.org/2008/01/07/stringtree-maven-repository/</guid>
+		<description><![CDATA[	I have experimented with Maven a few times, but never been particularly impressed. 
+	Recently, however, one of my users has been bugging me to make the Stringtree and Mojasef classes and sources available in a Maven-style repository, for easier integration with Maven (or Maven-like) build tools and workflows. So I have done it. The current [...]]]></description>
+			<content:encoded><![CDATA[	<p>I have experimented with <a href="http://maven.apache.org/">Maven</a> a few times, but never been particularly impressed. </p>
+	<p>Recently, however, <a href="http://www.realsolve.co.uk/site/home.php">one of my users</a> has been bugging me to make the Stringtree and Mojasef classes and sources available in a Maven-style repository, for easier integration with Maven (or Maven-like) build tools and workflows. So I have done it. The current versions of key Stringtree and Mojasef files are now available from the <a href="http://stringtree.org/repository/">Stringtree repository</a> at the following URLs:</p>
+	<ul>
+	<li><a href="http://stringtree.org/repository/org/stringtree/stringtree/2.0.10/stringtree-2.0.10-sources.jar">http://stringtree.org/repository/org/stringtree/stringtree/2.0.10/stringtree-2.0.10-sources.jar</a></li>
+	<li><a href="http://stringtree.org/repository/org/stringtree/stringtree/2.0.10/stringtree-2.0.10.jar">http://stringtree.org/repository/org/stringtree/stringtree/2.0.10/stringtree-2.0.10.jar</a></li>
+	<li><a href="http://stringtree.org/repository/org/stringtree/stringtree/2.0.10/stringtree-httpclient-2.0.10.jar">http://stringtree.org/repository/org/stringtree/stringtree/2.0.10/stringtree-httpclient-2.0.10.jar</a></li>
+	<li><a href="http://stringtree.org/repository/org/stringtree/stringtree/2.0.10/stringtree-json-2.0.10.jar">http://stringtree.org/repository/org/stringtree/stringtree/2.0.10/stringtree-json-2.0.10.jar</a></li>
+	<li><a href="http://stringtree.org/repository/org/stringtree/mojasef/2.0.b1/mojasef-2.0.b1-sources.jar">http://stringtree.org/repository/org/stringtree/mojasef/2.0.b1/mojasef-2.0.b1-sources.jar</a></li>
+	<li><a href="http://stringtree.org/repository/org/stringtree/mojasef/2.0.b1/mojasef-2.0.b1-withdependencies-sources.jar">http://stringtree.org/repository/org/stringtree/mojasef/2.0.b1/mojasef-2.0.b1-withdependencies-sources.jar</a></li>
+	<li><a href="http://stringtree.org/repository/org/stringtree/mojasef/2.0.b1/mojasef-2.0.b1-withdependencies.jar">http://stringtree.org/repository/org/stringtree/mojasef/2.0.b1/mojasef-2.0.b1-withdependencies.jar</a></li>
+	<li><a href="http://stringtree.org/repository/org/stringtree/mojasef/2.0.b1/mojasef-2.0.b1.jar">http://stringtree.org/repository/org/stringtree/mojasef/2.0.b1/mojasef-2.0.b1.jar</a></li>
+	</ul>
+	<p>The Stringtree and Mojasef build scripts now include a &#8220;publish&#8221; target which uploads such artefacts to appropriate places in the repository, so future versions should continue to be available.</p>
+	<p>This is the first time I have done this, so I would welcome comments from any readers who actually use Maven (or buildr, or anything else which supports this repository format). In particular, I am interested in opinions on whether it is OK to simply replace artefacts with the same names and locations for minor tweaks and bug-fixes, or whether even the smallest change should result in the generation and upload of a new version with a new name and location.
+</p>
+]]></content:encoded>
+			<wfw:commentRSS>http://blog.stringtree.org/2008/01/07/stringtree-maven-repository/feed/</wfw:commentRSS>
+	</item>
+		<item>
+		<title>A Simple HTTP Client - Part 1 (Overview)</title>
+		<link>http://blog.stringtree.org/2008/01/07/a-simple-http-client-part-1-overview/</link>
+		<comments>http://blog.stringtree.org/2008/01/07/a-simple-http-client-part-1-overview/#comments</comments>
+		<pubDate>Mon, 07 Jan 2008 11:00:26 +0000</pubDate>
+		<dc:creator>Stringtree</dc:creator>
+		
+	<category>Projects</category>
+	<category>HTTPClient</category>
+		<guid>http://blog.stringtree.org/2008/01/07/a-simple-http-client-part-1-overview/</guid>
+		<description><![CDATA[	This post is the first of a series describing the use and implementation of the Stringtree HTTP Client.
+	Recently I have been working with systems which talk to each other using REST/HTTP. Providing services and resources is pretty simple using Mojasef, but accessing such resources and consuming such services (in client code and in tests) has [...]]]></description>
+			<content:encoded><![CDATA[	<p><i>This post is the first of a series describing the use and implementation of the Stringtree HTTP Client.</i></p>
+	<p>Recently I have been working with systems which talk to each other using REST/HTTP. Providing services and resources is pretty simple using <a href='http://mojasef.stringtree.org/'>Mojasef</a>, but accessing such resources and consuming such services (in client code and in tests) has always seemed a bit more clumsy than it should be. I tried Apache HTTPClient and HttpUnit, but both seemed cumbersome for simple tasks, and bring in several hundred KB or more of dependencies, which can really bloat a small client application. I&#8217;m sure there are others, but I got bored with looking, and instead wrote my own simple HTTP Client which does the things I need without dragging in tons of extra stuff.</p>
+	<p>The Stringtree HTTP Client consists of just four classes, with no dependencies other than the standard Java APIs:</p>
+	<ul>
+	<li><a href="https://stringtree.svn.sourceforge.net/svnroot/stringtree/trunk/src/delivery/java/org/stringtree/http/HTTPClient.java">org.stringtree.http.HTTPClient</a></li>
+	<li><a href="https://stringtree.svn.sourceforge.net/svnroot/stringtree/trunk/src/delivery/java/org/stringtree/http/Form.java">org.stringtree.http.Form</a></li>
+	<li><a href="https://stringtree.svn.sourceforge.net/svnroot/stringtree/trunk/src/delivery/java/org/stringtree/http/Document.java">org.stringtree.http.Document</a></li>
+	<li><a href="https://stringtree.svn.sourceforge.net/svnroot/stringtree/trunk/src/delivery/java/org/stringtree/http/NameValue.java">org.stringtree.http.NameValue</a></li>
+	</ul>
+	<p>The point of these classes is to allow simple construction and calling of all valid HTTP requests, including the ability to set and read headers and cookies, simulate the submission of an HTML form, and support both textual and binary content data.</p>
+	<p>As a very simple example, consider the following code which issues a GET request to a specified URL:</p>
+	<p><code><br />
+HTTPClient client = new HTTPClient();<br />
+Document response = client.get("http://localhost:8080/?a=b");<br />
+System.out.println("response content type=" + response.getHeader("Content-Type"));<br />
+System.out.println("response content=" + response.getContentAsString());<br />
+</code></p>
+	<p>The above code example shows basic usage of the Stringtree HTTP Client. In more general terms, usage is as follows:</p>
+	<ol>
+	<li>Create an object of the HTTPClient class.</li>
+	<li>Set any long-lived settings, such as cookies or a user-agent.</li>
+	<li>Call one of the request methods with appropriate parameters.</li>
+	<li>Read returned headers and content as required from the returned <tt>Document</tt> object.</li>
+	<li>Repeat from (3) for each new request.</li>
+	</ol>
+	<p>A slightly more complex example using a POST request to submit an HTML form might look like:</p>
+	<p><code><br />
+HTTPClient client = new HTTPClient("Mozilla/5.0 (example)");<br />
+client.setCookie("username", "Frank");<br />
+Form form = new Form();<br />
+form.put("name", "Widget");<br />
+form.put("category", "thing");<br />
+Document response = client.post("http://localhost:8080/update", form);<br />
+boolean ok = "200".equals(response.getHeader(HTTPClient.HTTP_RESPONSE_CODE));<br />
+</code></p>
+	<p>All the request methods return an <tt>org.stringtree.http.Document</tt> object. This object represents the structure of an HTTP request or response: a collection of name/value headers (which may contain duplicate names), and a block of &#8220;content&#8221; which may be considered as text or as a sequence of bytes. The HTTPClient code does make one simplifying concession; as seen in the above POST example the HTTP response code is added as a pseudo-header with the name &#8220;http.response.code&#8221;.</p>
+	<p>This should be enough to get started playing with the Stringtree HTTP Client. In the next post I will discuss the possibilities for creating and configuring an HTTPClient object in full detail.
+</p>
+]]></content:encoded>
+			<wfw:commentRSS>http://blog.stringtree.org/2008/01/07/a-simple-http-client-part-1-overview/feed/</wfw:commentRSS>
+	</item>
+		<item>
+		<title>Mojasef goes into beta at last</title>
+		<link>http://blog.stringtree.org/2007/07/20/mojasef-goes-into-beta-at-last/</link>
+		<comments>http://blog.stringtree.org/2007/07/20/mojasef-goes-into-beta-at-last/#comments</comments>
+		<pubDate>Fri, 20 Jul 2007 14:01:53 +0000</pubDate>
+		<dc:creator>Stringtree</dc:creator>
+		
+	<category>Projects</category>
+	<category>Mojasef</category>
+		<guid>http://blog.stringtree.org/2007/07/20/mojasef-goes-into-beta-at-last/</guid>
+		<description><![CDATA[	Finally, I have got to a point where I reckon Mojasef is nearing a proper numbered stable release. To celebrate this I have updated the version number in the Mojasef source code to 2.0.b1 and made a downloadable release (source and jar)  available at Sourceforge.
+	I strongly encourage anyone interested in shaping the direction, contents [...]]]></description>
+			<content:encoded><![CDATA[	<p>Finally, I have got to a point where I reckon Mojasef is nearing a proper numbered stable release. To celebrate this I have updated the version number in the Mojasef source code to 2.0.b1 and made a downloadable release (source and jar)  <a href='http://sourceforge.net/project/showfiles.php?group_id=127152&#038;package_id=139193&#038;release_id=524517'>available at Sourceforge.</a></p>
+	<p>I strongly encourage anyone interested in shaping the direction, contents and/or timing of the official 2.0.1 release of Mojasef to grab this release, have a play with it, and let me know your comments and suggestions.</p>
+	<p>I know that it is light on documentation, especially as even the examples on the web site are not quite accurate any more, but that is now <b>very</b> high on my list of priorities.
+</p>
+]]></content:encoded>
+			<wfw:commentRSS>http://blog.stringtree.org/2007/07/20/mojasef-goes-into-beta-at-last/feed/</wfw:commentRSS>
+	</item>
+		<item>
+		<title>Stringtree JSON 2.0.9</title>
+		<link>http://blog.stringtree.org/2007/07/20/stringtree-json-209/</link>
+		<comments>http://blog.stringtree.org/2007/07/20/stringtree-json-209/#comments</comments>
+		<pubDate>Fri, 20 Jul 2007 11:42:08 +0000</pubDate>
+		<dc:creator>Stringtree</dc:creator>
+		
+	<category>Projects</category>
+	<category>JSON</category>
+		<guid>http://blog.stringtree.org/2007/07/20/stringtree-json-209/</guid>
+		<description><![CDATA[	Along with the latest release of Stringtree I have released a new Stringtree JSON.
+	The major change is the provision of an extra version of JSONReader.read which takes a CharacterIterator to allow reading of JSON from within a larger body of text.
+	I&#8217;ve also had another try at ensuring that it is Java 1.4 compatible. Please let [...]]]></description>
+			<content:encoded><![CDATA[	<p>Along with the latest release of Stringtree I have released a new Stringtree JSON.</p>
+	<p>The major change is the provision of an extra version of JSONReader.read which takes a CharacterIterator to allow reading of JSON from within a larger body of text.</p>
+	<p>I&#8217;ve also had another try at ensuring that it is Java 1.4 compatible. Please let me know of any problems you encounter, particularly Java1.4 incompatibility issues.</p>
+	<p><a href='http://sourceforge.net/project/showfiles.php?group_id=80689&#038;package_id=226281&#038;release_id=524468'>Download from Sourceforge as usual</a>, and the source is in with Stringtree 2.0.9.</p>
+	<p>Have fun.
+</p>
+]]></content:encoded>
+			<wfw:commentRSS>http://blog.stringtree.org/2007/07/20/stringtree-json-209/feed/</wfw:commentRSS>
+	</item>
+		<item>
+		<title>Stringtree 2.0.9</title>
+		<link>http://blog.stringtree.org/2007/07/20/stringtree-209/</link>
+		<comments>http://blog.stringtree.org/2007/07/20/stringtree-209/#comments</comments>
+		<pubDate>Fri, 20 Jul 2007 11:12:08 +0000</pubDate>
+		<dc:creator>Stringtree</dc:creator>
+		
+	<category>General</category>
+	<category>Projects</category>
+		<guid>http://blog.stringtree.org/2007/07/20/stringtree-209/</guid>
+		<description><![CDATA[	It&#8217;s been a month or so, so it&#8217;s time for another release of Stringtree. Changes in this release include:
+	
+	fixed some broken EasyTemplater constructors
+	added switchable prefixing of attributes in XMLReader
+	added switchable forcing all values to lists in XMLReader
+	added storing cdata from mixed elements as &#8220;text()&#8221; in XMLReader
+	added extra &#8220;read&#8221; methods to JSONReader to allow calling with [...]]]></description>
+			<content:encoded><![CDATA[	<p>It&#8217;s been a month or so, so it&#8217;s time for another release of Stringtree. Changes in this release include:</p>
+	<ul>
+	<li>fixed some broken EasyTemplater constructors</li>
+	<li>added switchable prefixing of attributes in XMLReader</li>
+	<li>added switchable forcing all values to lists in XMLReader</li>
+	<li>added storing cdata from mixed elements as &#8220;text()&#8221; in XMLReader</li>
+	<li>added extra &#8220;read&#8221; methods to JSONReader to allow calling with a CharacterIterator</li>
+	<li>XMLReader now skips a DOCTYPE without complaining.</li>
+	<li>tests.Hierarchy renamed to tests.tree</li>
+	<li>small tidyup of object creation to allow reference to context items instead of full class+parameter specifications</li>
+	<li>support a naive view of namespaces in XML parser, include colonprefix in the name</li>
+	<li>some slight improvements to class creation stuff in util to better deal with multiple calls to &#8220;init&#8221;.</li>
+	<li>added a GUID generator for use in REST-style applications</li>
+	</ul>
+	<p><a href='http://sourceforge.net/project/showfiles.php?group_id=80689&#038;package_id=82458&#038;release_id=524466'>Download available from Sourceforge as usual</a>
+</p>
+]]></content:encoded>
+			<wfw:commentRSS>http://blog.stringtree.org/2007/07/20/stringtree-209/feed/</wfw:commentRSS>
+	</item>
+		<item>
+		<title>Demo Friki currently out of action</title>
+		<link>http://blog.stringtree.org/2007/07/18/demo-friki-currently-out-of-action/</link>
+		<comments>http://blog.stringtree.org/2007/07/18/demo-friki-currently-out-of-action/#comments</comments>
+		<pubDate>Wed, 18 Jul 2007 19:56:05 +0000</pubDate>
+		<dc:creator>Stringtree</dc:creator>
+		
+	<category>Site News</category>
+	<category>Projects</category>
+	<category>Friki</category>
+		<guid>http://blog.stringtree.org/2007/07/18/demo-friki-currently-out-of-action/</guid>
+		<description><![CDATA[	I have just been informed by my hosting provider that they have had to disable the Java support on the server running the example Friki. Apparently this is due to too many applications from different users clogging up the stderr logs. I won&#8217;t be able to re-enable Friki until I have ensured that it does [...]]]></description>
+			<content:encoded><![CDATA[	<p>I have just been informed by my hosting provider that they have had to disable the Java support on the server running the example Friki. Apparently this is due to too many applications from different users clogging up the stderr logs. I won&#8217;t be able to re-enable Friki until I have ensured that it does not log anything to stderr.</p>
+	<p>In practice I have not touched the Friki code in ages, and the demo installation was filling up with Wiki spam, so I might take this opportunity to bring Friki into line with current Stringtree practice.</p>
+	<p>Sorry if you were looking for a demo, but I&#8217;ll announce here when it is back again.
+</p>
+]]></content:encoded>
+			<wfw:commentRSS>http://blog.stringtree.org/2007/07/18/demo-friki-currently-out-of-action/feed/</wfw:commentRSS>
+	</item>
+		<item>
+		<title>Read JSON from a CharacterIterator</title>
+		<link>http://blog.stringtree.org/2007/07/05/read-json-from-a-characteriterator/</link>
+		<comments>http://blog.stringtree.org/2007/07/05/read-json-from-a-characteriterator/#comments</comments>
+		<pubDate>Thu, 05 Jul 2007 22:52:32 +0000</pubDate>
+		<dc:creator>Stringtree</dc:creator>
+		
+	<category>General</category>
+	<category>Projects</category>
+	<category>JSON</category>
+		<guid>http://blog.stringtree.org/2007/07/05/read-json-from-a-characteriterator/</guid>
+		<description><![CDATA[	I just had a pleasant email exchange with someone who is interested in embedding Stringtree JSON in another project. In this particular case, the basic functionality of the JSONReader is fine, but the calling API was not quite aligned with what they need.
+	So now, as well as reading JSON from a String, you now have [...]]]></description>
+			<content:encoded><![CDATA[	<p>I just had a pleasant email exchange with <a href="http://www.mail-archive.com/dev@tomcat.apache.org/msg17996.html">someone</a> who is interested in embedding Stringtree JSON in another project. In this particular case, the basic functionality of the JSONReader is fine, but the calling API was not quite aligned with what they need.</p>
+	<p>So now, as well as reading JSON from a String, you now have the ability to read JSON from a CharacterIterator. This was a neat changes, as Stringtree JSONReader uses a CharacterIterator internally anyway, so the extra method actually does a bit <i>less</i> than the original one.</p>
+	<p>For &#8220;power users&#8221;, there is actually an extra method. When JSONReader starts reading from a CharacterIterator it&#8217;s not entirely clear whether it should get its first character by calling <tt>current()</tt> to get a character already read once, or by calling <tt>next()</tt> to get the next unread character, or by calling <tt>first()</tt> to get the first character of the sequence. With this in mind I have provided a <b><tt>read(CharacterIterator ci, int start)</tt></b>, where start can be <tt>JSONReader.START</tt>, <tt>JSONReader.NEXT</tt>, or <tt>JSONReader.CURRENT</tt>.</p>
+	<p>This update is available in sourceforge subversion, and will be included in the next release of Stringtree and Stringtree JSON.
+</p>
+]]></content:encoded>
+			<wfw:commentRSS>http://blog.stringtree.org/2007/07/05/read-json-from-a-characteriterator/feed/</wfw:commentRSS>
+	</item>
+		<item>
+		<title>A Mojasef improvement prompted by thoughts of Spring</title>
+		<link>http://blog.stringtree.org/2007/07/04/a-mojasef-improvement-prompted-by-thoughts-of-spring/</link>
+		<comments>http://blog.stringtree.org/2007/07/04/a-mojasef-improvement-prompted-by-thoughts-of-spring/#comments</comments>
+		<pubDate>Wed, 04 Jul 2007 10:06:53 +0000</pubDate>
+		<dc:creator>Stringtree</dc:creator>
+		
+	<category>Projects</category>
+	<category>Mojasef</category>
+		<guid>http://blog.stringtree.org/2007/07/04/a-mojasef-improvement-prompted-by-thoughts-of-spring/</guid>
+		<description><![CDATA[	Following on from my post a couple of days ago I&#8217;ve now added a small extra feature to Mojasef which should add a whole range of extra power. One of the things it enables is a much closer integration with Spring, but that&#8217;s only a small part of the possibilities.
+	The way this new feature is [...]]]></description>
+			<content:encoded><![CDATA[	<p>Following on from <a href='http://blog.stringtree.org/2007/07/02/integrating-a-spring-context-with-stringtree/'>my post a couple of days ago</a> I&#8217;ve now added a small extra feature to Mojasef which should add a whole range of extra power. One of the things it enables is a much closer integration with Spring, but that&#8217;s only a small part of the possibilities.</p>
+	<p>The way this new feature is used is very simple. If you recall from the <a href='http://mojasef.stringtree.org/'>Mojasef documentation</a>, the single most important Mojasef configuration is the <tt>http.application</tt> value. This may be specified as a system parameter or defined in a &#8220;spec&#8221; file, but the end result is the same :- it&#8217;s the object which provides the methods which eventually get called for each incoming HTTP request.</p>
+	<p>The new feature supports a similar (but optional) configuration <tt>http.application.context</tt>. If you define such a configuration, and the specified object implements <tt>org.stringtree.Fetcher</tt> or <tt>java.util.Map</tt>, it will be treated as an integral part of the common &#8220;context&#8221; available to all application methods.</p>
+	<p>One upshot of this is that if you define <tt>http.application.context</tt> to be an <tt>org.stringtree.spring.SpringFetcher</tt>, then all your Spring objects will be available as &#8220;first class&#8221; objects in your Mojasef applications. No more need for a &#8220;<tt>spring.</tt>&#8221; prefix in templates, or extra application code to fetch, cast, and eventually use a Spring BeanFactory.</p>
+	<p>The use of this new feature is not limited to Spring, though. You can supply any Map or Fetcher implementation, which means that you can use any static or dynamic name/value mapping. I haven&#8217;t written any implementations of such things yet, but there is no reason in principle that this technique could not be used to integrate diverse sources such as JNDI/LDAP repositories, databases queried by SQL, XML documents queried using XPath or even asking the whole web using a search engine such as Google.</p>
+	<p>And, don&#8217;t forget that you can combine any or all of these either using the built-in Stringtree <tt>FallbackFetcher</tt> mechanism, or by providing your own aggregating implementations of <tt>org.stringtree.Fetcher</tt> or <tt>java.util.Map</tt>.</p>
+	<p>As a final twist, Mojasef is smart enough to try alternatives if you don&#8217;t want to manually specify such a context. It was not an accident that <tt>http.application.context</tt> starts with <tt>http.application</tt>. If your <tt>http.application</tt> object makes available a property named <tt>context</tt> (typically by providing a <tt>getContext()</tt> accessor, or by exposing a <tt>get(String name)</tt> method which returns a non-null value for the name &#8220;context&#8221;) then Mojasef can use that too.</p>
+	<p>This code is currently in <a href='http://mojasef.svn.sourceforge.net/mojasef/trunk/'>subversion</a>, and will be included in the next stable Mojasef release. Example JUnit tests for the new feature can be read <a href='https://mojasef.svn.sourceforge.net/svnroot/mojasef/trunk/src/test/java/tests/CommonContextLiteralApplicationContextTest.java'>here</a> and <a href='https://mojasef.svn.sourceforge.net/svnroot/mojasef/trunk/src/test/java/tests/CommonContextAccessorApplicationContextTest.java'>here</a>
+</p>
+]]></content:encoded>
+			<wfw:commentRSS>http://blog.stringtree.org/2007/07/04/a-mojasef-improvement-prompted-by-thoughts-of-spring/feed/</wfw:commentRSS>
+	</item>
+		<item>
+		<title>Integrating a Spring context with Stringtree</title>
+		<link>http://blog.stringtree.org/2007/07/02/integrating-a-spring-context-with-stringtree/</link>
+		<comments>http://blog.stringtree.org/2007/07/02/integrating-a-spring-context-with-stringtree/#comments</comments>
+		<pubDate>Mon, 02 Jul 2007 21:56:18 +0000</pubDate>
+		<dc:creator>Stringtree</dc:creator>
+		
+	<category>Projects</category>
+	<category>Mojasef</category>
+		<guid>http://blog.stringtree.org/2007/07/02/integrating-a-spring-context-with-stringtree/</guid>
+		<description><![CDATA[	I don&#8217;t tend to use it myself (preferring the &#8220;spec&#8221; mechanism built-in to Stringtree), but today someone asked me if a Mojasef application could work with Spring.
+	After a bit of thought, some downloading, and a little playing, here is the result. My intention was to allow beans configured in a Spring application context to act [...]]]></description>
+			<content:encoded><![CDATA[	<p>I don&#8217;t tend to use it myself (preferring the &#8220;spec&#8221; mechanism built-in to Stringtree), but today <a href="http://www.javapolis.com/confluence/display/JP06/Introducing+Strecks,+Java+5+extensions+for+Struts+by+Phil+Zoio">someone</a> asked me if a Mojasef application could work with <a href="http://www.springframework.org/">Spring</a>.</p>
+	<p>After a bit of thought, some downloading, and a little playing, here is the result. My intention was to allow beans configured in a Spring application context to act as first-class citizens within a Stringtree context, so that they can be used seamlessly inside Mojasef application code and templates. </p>
+	<p>The implementation was actually pretty simple, essentially consisting of creating a class which implements <tt>org.stringtree.Fetcher</tt> and provides access to any Spring beans within a Spring context.</p>
+	<pre class="code">
+package org.stringtree.spring;
+	
+import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.BeanFactory;
+import org.stringtree.Fetcher;
+	
+public class SpringFetcher implements Fetcher {
+	
+	private BeanFactory factory;
+	
+	public SpringFetcher(BeanFactory factory) {
+		this.factory = factory;
+	}
+	
+	public Object getObject(String name) {
+		Object ret = null;
+		try {
+			ret = factory.getBean(name);
+		} catch(BeansException e) {
+			ret = null;
+		}
+	
+		return ret;
+	}
+}
+</pre>
+	<p>To use this class, you will need to create an instance of it, passing in a Spring BeanFactory or ApplicationContext object to the constructor. Then the SpringFetcher object can be used just as any other Fetcher. </p>
+	<p>It seems that when using Spring in a Mojasef application, what will likely be needed is a single Mojasef context which provides access to both Mojasef and Spring objects. To achieve this, simply wrap the two Fetchers in a FallbackFetcher:</p>
+	<pre class='code'>
+	Fetcher spring = new SpringFetcher(new XmlBeanFactory(new FileSystemResource(&quot;application.xml&quot;)));
+	Fetcher map = new MapFetcher();
+	Fetcher ff = new FallbackFetcher(spring, map);
+</pre>
+	<p>An example Eclipse project containing the SpringFetcher class, some unit tests, and the jar files to compile and run them is available in sourceforge subversion at <a href="https://svn.sourceforge.net/svnroot/stringtree/projects/spring_example/trunk">https://svn.sourceforge.net/svnroot/stringtree/projects/spring_example/trunk</a>.
+</p>
+]]></content:encoded>
+			<wfw:commentRSS>http://blog.stringtree.org/2007/07/02/integrating-a-spring-context-with-stringtree/feed/</wfw:commentRSS>
+	</item>
+	</channel>
+</rss>

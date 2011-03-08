@@ -1,0 +1,3 @@
+line 1
+line 2
+third and @final@ line

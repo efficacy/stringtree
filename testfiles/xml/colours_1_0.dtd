@@ -1,0 +1,4 @@
+<!DOCTYPE catalog [
+<!ELEMENT ugh (colour+)>
+<!ELEMENT colour (#PCDATA)>
+]>

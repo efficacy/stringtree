@@ -1,0 +1,113 @@
+Stringtree stories:
+
+next iteration (2.0.10) target 15 August 2007
+--------------------
+
++ (templater) line/column-based errors in Templater
++ (templater) "debug" mode which reports fetches from unavailable items
++ (templater) rewrite template expression parser mechanism to avoid conflicts
++ (templater) add support for "," to generate lists e.g: ${'a','b','c'*hello}
++ (templater) alternative comment syntax
++ (templater) write documentation and examples
++ (templater) experiment with cacheing parsed templates rather than just raw text (do some performance tests)
+
+unscheduled
+-----------
+
++ (mojadef) new sub-project to specify a thinlet UI application in a tract
++ (mojadef) also support ui configuration in LEL (http://ihate.rubyforge.org/profligacy/lel.html)
++ consider a better design for low-level object identification/loading in Fetcher
++ (JSON) line/column-based error handler
++ reintroduce the rest of the fetcher tests
++ do some more pruning and categorization in util
++ (site) create some project icons for the umbrella site
++ (finder) write documentation and examples for Fetcher/Finder
++ reorganize StringCollector so it really can use other destinations than ByteArray
++ light-weight SOAP caller with no external dependencies and similar API to JSON
++ separate out external dependencies so new users can build standalone
++ (optional?) exceptions on fetching missing items
++ (juicer) write documentation and examples
++ (db) write documentation and examples
++ (spec) write documentation and examples
++ (spec) add *=
++ (spec) add &=
++ empire/workflow extend hierarchy spec to allow moja style method calls on long-lived object, to support easy XML parsing etc.
++ empire/workflow input format like ragel state charts (http://www.zedshaw.com/tips/ragel_state_charts.html)
+
+done (2.0.4) delivered 30 October 2006
+------------
+
++ clean out old stories, move to new style
++ add prefix/suffix filter to allow fetching resources from deep classpaths
++ fix that annoying classpath failure on linux
++ make the environment values tests more platform-tolerant
++ create simple top-level index page for stringtree.org umbrella site
++ integrate JSON patches from blog
++ bring iterating (sub-template) patterns in line with the rest of Templater, using the shared collector
++ add support for optionally escaping XML in Templater
++ make bean fetcher a bit less fragile when trying to access public fields
++ change build process to build version-less jar and src zip for easy linking
+
+done (2.0.5) delivered 25 March 2007
+------------
+
++ added templater test for calling a pipe on an object before multiplying
++ added initial mock implementation of JDBC classes
++ reintroduced some Tract Fetcher tests. Not all working yet, though.
++ added quot and apos to XMLEscaper
++ migrate juicer & tests
++ migrate workflow and tests
++ reformat Juicer code to new standard
++ add juicer tests into main test sequence
++ add workflow tests into main test sequence
++ go through all code and check formatting
++ write JSON validator
++ add MapResultRowListener to collect name/value pairs from database results
++ (spec) support use of @ and ! with no names as resource and filesystem includes
++ (JSON) write documentation and examples
++ (JSON) notify JSON.org
++ modify build script to generate separate stringtree-json jar
+
+done (2.0.6) delivered 17 April 2007
+------------
+
++ add Jim Yingst's fix to allow access to partially public bean accessors
++ backup target in build scripts for easier development on non-networked machines
++ remove Java 5 dependency in JSON
+
+done in 2.0.7 delivered 21 May 2007
+-------------
++ migrate old XML processing code to new style
++ add support for a default template separator of \n if / is specified with no value
+
+done in 2.0.8 delivered 28 June 2007
+-------------
++ added smarter string parameter parsing to DriverManagerDataSource for use from spec files
++ made Spliterator constructor parameters more sensible for common usage
++ alternate XML parser to support an output object tree compatible with JSON
++ added DataReader interface and both XML and JSON implementations
++ added AgnosticDataReader which detects and correctly parses both XML and JSON.
++ added EasyTemplater to wrap up commmon usage cases
+
+done in 2.0.9 delivered 20 July 2007
+-------------
++ fixed some broken EasyTemplater constructors
++ added switchable prefixing of attributes in XMLReader
++ added switchable forcing all values to lists in XMLReader
++ added storing cdata from mixed elements as "text()" in XMLReader
++ added extra "read" methods to JSONReader to allow calling with a CharacterIterator
++ XMLReader now skips a DOCTYPE without complaining.
++ tests.Hierarchy renamed to tests.tree
++ small tidyup of object creation to allow reference to context items instead of full class+parameter specifications
++ support a naive view of namespaces in XML parser, include colonprefix in the name
++ some slight improvements to class creation stuff in util to better deal with multiple calls to "init".
++ added a GUID generator for use in REST-style applications
+
+done in 2.0.10
+--------------
++ ensure LineReaders autoclose on exceptions
++ reintroduce Tract identification to low-level fetchers
++ (finder) simplify Finder names to solidify the "thin layer on fetcher" style
++ (finder) be harsh with simplifying the interfaces
++ (spec) reorganize to allow arbitrary sequences of suffixes
++ added support in XMLProcessor (and thus in XMLReader etc.) for XML numeric entities (both dec and hex)

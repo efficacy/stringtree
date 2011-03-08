@@ -1,0 +1,57 @@
+# harmonise line-endings
+Replace !(\n\r)|(\r\n)|(\r)!\n!
+
+# escape rogue HTML
+Replace !<!&lt;!
+Replace !>!&gt;!
+
+# "six-ticks" - override pattern recognition
+Replace !''''''!<b></b>!
+
+# "hands-off" block
+Lock !\[\n((.|\n)*?)\n\]!<pre>&1</pre>!
+
+# tabs, emphasis and rulers
+Replace !        !\t!
+Replace !\n\s*\n!\n<p/>\n!
+Replace !'{5}(.+?)'{5}!<i><b>$1</b></i>!
+Replace !'{3}(.+?)'{3}!<b>$1</b>!
+Replace !'{2}(.+?)'{2}!<i>$1</i>!
+Replace !(^|\n)-{4,}!\n<hr/>!
+
+# monospace
+Replace !((^|\n) (.+))+!<pre>$0</pre>!
+Replace !<pre> !<pre>!
+Replace !\n !\n!
+
+# ordered/unordered list
+FilterReplace org.stringtree.wiki.ListRow !((^|\n)\t+(\*|[1234567890]+)\.?\s*(.*))+!&~0!
+
+# def list
+Replace !(((?:^|\n)\t+)(?:\s*)(.*)(?:\s*):(?:\s*)(.*))+!<dl>\n$0\n</dl>!
+Replace !((?:^|\n)\t+)(?:\s*)(.*)(?:\s*):(?:\s*)(.*)!$1<dt>$2</dt><dd>$3</dd>!
+
+# embedded URLs
+Lock !(?i)(http|https|ftp|file)(?-i):([^\s\<\>\[\]\"'\(\)\?])*[^\s\<\>\[\]\"'\(\)\?\,\.](\.[Gg][Ii][Ff]|\.[Jj][Pp][EeGg]{1,2}|\.[Pp][Nn][Gg])([\?][^\s\<\>\[\]\"'\(\)\?]*[^\s\<\>\[\]\"'\(\)\?\,\.])?!<img src='&0'/>!
+Lock !(?i)(http|https|file|ftp|mailto)(?-i):([^\s\<\>\[\]\"'\(\)\?])*[^\s\<\>\[\]\"'\(\)\?\,\.]([\?][^\s\<\>\[\]\"'\(\)\?]*[^\s\<\>\[\]\"'\(\)\?\,\.])?!<a href='&0'>&0</a>!
+
+# embedded ISBN
+FilterLock org.stringtree.wiki.CompressISBN !(?:\[\s?)?(?:ISBN:?\s?)((?:\d[ -]?){9}(?:[\dXx]))(?:\s?\])?!<a href='http://www.amazon.com/exec/obidos/ASIN/&~1/efficacysolut-20'>ISBN &1</a>!
+
+# remote wiki link
+FilterLock org.stringtree.wiki.RemoteWikiLink !(\p{Alpha}+)(:\p{Alpha}+)!&~1&0!
+ForceReplace !^remote\{(.*)\}(\p{Alpha}+):(\p{Alpha}+)!<a href='$1$3'>$2:$3</a>!
+
+# internal page link
+FilterLock org.stringtree.wiki.LocalWikiLink !\b((\p{Upper}\p{Lower}+){2,})\b!&~1!
+ForceReplace !^view\{(.*)\}!<a href='view?$1'>$1</a>!
+ForceReplace !^edit\{(.*)\}!$1<a href='edit?$1'>?</a>!
+
+# a "hook" for extra user-defined processing without mucking up this file
+Include wiki-extra.txt
+
+# merge locked and unlocked regions so they can be placed in table cells
+Join
+
+# table (follows the Join, to allow "hands off" blocks in table cells
+FilterLock org.stringtree.wiki.TableRow !(((^|\n)\|((.*?|(<pre>(.|\n)*?</pre>))\|[ \t]*)))+(?=$|\n)!<table BORDER CELLSPACING='0' CELLPADDING='3'>&~0\n</table>!

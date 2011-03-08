@@ -1,0 +1,16 @@
+# An example of an alternative spoecification syntax.
+# This syntax is good for specifiying processing of hierarchical
+# (and potentially recursive) hierarchical processes, such as
+# XML document parsing.
+
+image
+ template
+ margins               tests.workflow.EchoEffect  hello world
+  top
+  bottom
+
+  left
+  right
+ content
+  text
+  image

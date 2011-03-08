@@ -1,0 +1,25 @@
+# Example showing how transaitions can be "inherited" from basic states
+# (in this case the never-reached ALL state) using the '=' operator.
+# this example also shows how the default transition symbols for the
+# built-in BACK and RESET actions can be overridden if there is clash
+# with domain terminology.
+
+$START 2
+$BACKSYMBOL <<
+$RESETSYMBOL @
+
+ALL BACK <<
+ALL STAY _SELF
+
+1 = ALL
+1 HAPPY 3
+1 RESET @
+
+2 = ALL
+2 SAD 1
+2 BORED _SELF
+
+3 = ALL
+3 COMPLETE _EXIT
+3 PLOP UGH
+		

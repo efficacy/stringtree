@@ -1,0 +1,19 @@
+# Example of another alternate syntax, more suited to parsing of
+# character streams.
+
+$START UNQUOTED
+
+UNQUOTED '"' INDOUBLE
+UNQUOTED '\'' INSINGLE
+UNQUOTED ',' _SELF	tests.EmitColumn
+UNQUOTED '\n' _SELF	tests.EmitRow
+UNQUOTED  *  _SELF	tests.Add
+
+QUOTED  *  _SELF	tests.Add
+
+INDOUBLE = QUOTED
+INDOUBLE '"' _BACK
+
+INSINGLE = QUOTED
+INSINGLE '\'' _BACK
+

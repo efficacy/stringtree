@@ -1,0 +1,1 @@
+before[${plugin.thing}${plugin.what}]after

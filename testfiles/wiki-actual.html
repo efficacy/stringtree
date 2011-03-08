@@ -1,0 +1,144 @@
+This installation of Friki uses "classic" formatting.
+<p/>
+In this style page formatting is based on the style used in the "original" Wiki
+described at <a href='http://c2.com/cgi/wiki?TextFormattingRules'>Wiki:TextFormattingRules</a>.
+<p/>
+Text is mostly displayed as you have typed it. To prevent problems with rendering 
+HTML, important characters such as '&lt;'. '>, and '&' are "escaped".  HTML normally 
+joins lines and wraps the result, so to start a new paragraph, you need to put a 
+blank line (which will be converted to a &lt;p> tag).  "Classic" markup also adds ways
+to indicate <i>emphasis</i>, <b>strong emphasis</b>, and so on.
+<p/>
+The thing that makes this a "Wiki", and not just a collection of editable pages
+is the ability to create "links" between pages.  In the "classic" formatting, a link
+is identified by creating  a "W<b></b>ikiWord"; placing two or more initial-capitalised 
+words together (eg. <a href='view?FrontPage'>FrontPage</a>).  If the page exists, you'll see a link to it, if it 
+doesn't exist yet, you'll see the name followed by a '?', which you can click to create
+the page.
+<p/>
+The rules are described in more detail below:
+<p/>
+<hr/>
+<p/>
+<b>Emphasis</b>
+<p/>
+<ul>
+<li>Use doubled single-quotes ('') for emphasis (usually italics)</li>
+<li>Use tripled single-quotes (''') for strong emphasis (usually bold)</li>
+<li>Emphasis can be used multiple times within a line, but cannot span across line boundaries</li>
+</ul>
+<p/>
+<b>References</b>
+<p/>
+<ul>
+<li>J<b></b>oinCapitalizedWords to make references to other pages on this Wiki.</li>
+<li>Precede URLs with "http:", "ftp:", "gopher:", "mailto:", or "news:" to create links automatically as in: <a href='http://www.efsol.com/'>http://www.efsol.com/</a></li>
+<li>URLs of objects ending with .gif, .jpg, .jpeg or .png are inlined as images.</li>
+<li>Refer to pages on other Wikis using "interwiki" syntax as described at <a href='http://www.usemod.com/cgi-bin/mb.pl?InterMap'>MeatBall:InterMap</a></li>
+<li>Use Six Single Quotes to A<b></b>voidMakingReferencesToOtherPagesOnThisWiki, or separate suffixes (like 's') (eg. <a href='view?FrontPage'>FrontPage</a><b></b>s).</li>
+<li><a href='http://www.amazon.com/exec/obidos/ASIN/0137483104/efficacysolut-20'>ISBN 0-13-748310-4</a> links to a bookseller. (The pattern is: "ISBN", optional colon, space, ten digits with optional hyphens, the whole thing optionally in square brackets. The last digit can be an "X".) We are an Amazon Associate.</li>
+<li>I S B N: 0123456789 becomes <a href='http://www.amazon.com/exec/obidos/ASIN/0123456789/efficacysolut-20'>ISBN 0123456789</a></li>
+<li>[I S B N 0123456789] becomes <a href='http://www.amazon.com/exec/obidos/ASIN/0123456789/efficacysolut-20'>ISBN 0123456789</a></li>
+<li>[I S B N: 123-456-789-X] becomes <a href='http://www.amazon.com/exec/obidos/ASIN/123456789X/efficacysolut-20'>ISBN 123-456-789-X</a></li>
+</ul>
+<p/>
+<b>Horizontal Lines</b>
+<p/>
+<ul>
+<li>Four or more hyphens at the beginning of a line make a horizontal rule</li>
+</ul>
+<p/>
+<b>Bullets or Numbered Lists</b>
+<p/>
+<ul>
+<li>One line for each item</li>
+<li><b>tab</b> <b>*</b> (or 8 spaces and <b>*</b>), for first level</li>
+<li><b>tab</b> <b>tab</b> <b>*</b> for second level, etc.</li>
+<li>Use * for bullet lists, 1. for numbered lists (mix at will) -- always use 1., it will be renumbered automagically.</li>
+</ul>
+<p/>
+<b>Definition Lists</b>
+<p/>
+<ul>
+<li><b>tab</b> <i>term</i> colon <b>tab</b> <i>Definition</i>, for example:</li>
+</ul>
+<p/>
+<dl>
+
+	<dt>first term</dt><dd>This is first definition.	</dd>
+	<dt>second term</dt><dd>This is the second definition.</dd>
+</dl>
+<p/>
+<b>Fonts</b>
+<p/>
+<ul>
+<li>Indent with one or more spaces to use a monospace font:</li>
+</ul>
+<p/><pre>
+
+This is text in a monospaced font.
+  This is indented with three spaces.
+</pre>
+This is not.
+<p/>
+Notice that there is a <a href='view?MonospaceIndentationProblem'>MonospaceIndentationProblem</a>.
+<p/>
+<b>Indented Paragraphs</b>
+<i>(Quotes)</i>
+<p/>
+<ul>
+<li><b>tab</b> <b>space</b> : <b>tab</b> may be used (often with emphasis) for quotations.</li>
+</ul>
+<p/>
+Sample:
+<dl>
+
+	<dt></dt><dd>This is quoted.</dd>
+</dl>
+This isn't.
+<p/>
+<b>Preformatted Blocks</b>
+<p/>
+<ul>
+<li>A line ending with '[' starts a preformatted block, which runs up to the next line which starts with ']'.  Within a preformatted block Wiki<b></b>Words, lists, quotes, tables etc. have no significance, and indentation is preserved.  Typically preformatted blocks are used for source code examples, or other complex text.</li>
+</ul>
+<p/>
+<b>Tables</b>
+<p/>
+This Wiki implements Ward Cunningham's table syntax introduced for his Wiki at <a href='http://fit.c2.com/'>http://fit.c2.com/</a>, but not yet propagated back to the original Wiki.
+<p/>
+<ul>
+<li>Any line starting and ending with | (with optional trailing whitespace) will appear as a table.</li>
+<li>Separate columns with |</li>
+<li>Empty cells are merged with adjacent cells to form single spanning cells.</li>
+<li>If you really want an empty cell, put six-single-quotes in it, and it will show as empty.</li>
+<li>You can put preformatted blocks in table cells using |[ and ]|</li>
+</ul>
+<p/><table BORDER CELLSPACING='0' CELLPADDING='3'>
+<tr><td><b></b>    </td><td colspan='3'>Example Table</td></tr>
+<tr><td><b>type</b></td><td>with </td><td>spanning</td><td>header    </td></tr>
+<tr><td><b>cols</b></td><td> and </td><td>several</td><td> columns  </td></tr>
+</table>
+<p/><table BORDER CELLSPACING='0' CELLPADDING='3'>
+<tr><td>BlockTransform<a href='edit?BlockTransform'>?</a>.java</td></tr>
+<tr><td><pre>
+package com.efsol.friki.transform;
+
+import com.efsol.friki.*;
+
+public class BlockTransform extends DynamicTransform
+{
+	private Transformer tx;
+	private String URL="http://www.efsol.com/"
+
+	public BlockTransform()
+	{
+		super("\\[" + newLinePattern + "((?:[^\\n\\r]*" + newLinePattern + ")+)" + "\\]");
+
+		tx = new Transformer();
+		tx.addTransform(newLinePattern, "&lt;br>");
+		tx.addTransform("\\|", "\\\\|");
+	}
+}
+</pre></td></tr>
+</table>

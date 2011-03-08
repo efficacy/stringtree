@@ -1,0 +1,1 @@
+array@[]: testfiles/specdir/ex1.txt http://www.stringtree.org/ex2.txt

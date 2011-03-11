@@ -12,11 +12,9 @@ public class ParameterClassUtils {
 	private static final Class[] SINGLE_STRING_CLASS_ARRAY = new Class[] { String.class };
     private static final Object[] SINGLE_STRING_OBJECT_ARRAY = new Object[] { "" };
 
-    public static Object rawCreateWithParameters(String className,
-            Object[] args, Class[] types, ClassLoader loader) throws Exception {
+    public static Object rawCreateWithParameters(Class c, Object[] args, Class[] types) throws Exception {
         Object ret = null;
 
-        Class c = ClassUtils.loadClass(className, loader);
         if (types == null) {
             types = new Class[args.length];
             for (int i = 0; i < args.length; ++i) {
@@ -29,10 +27,16 @@ public class ParameterClassUtils {
             ret = cx.newInstance(args);
         } catch (NoSuchMethodException nsme) {
             // No constructor taking parameters, so try the no-arg one instead
-            ret = ClassUtils.rawCreate(className, loader);
+            ret = ClassUtils.rawCreate(c);
         }
 
         return ret;
+    }
+
+    public static Object rawCreateWithParameters(String className,
+            Object[] args, Class[] types, ClassLoader loader) throws Exception {
+        Class c = ClassUtils.loadClass(className, loader);
+        return rawCreateWithParameters(c, args, types);
     }
 
     public static Object rawCreateWithDefaultParameters(String className, ClassLoader loader) throws Exception {

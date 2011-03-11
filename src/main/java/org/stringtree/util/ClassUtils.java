@@ -12,9 +12,14 @@ public class ClassUtils {
         return Class.forName(className, true, loader);
     }
 
+    @SuppressWarnings("unchecked")
+	public static Object rawCreate(Class cls)
+            throws ClassNotFoundException, IllegalAccessException, InstantiationException {
+        return cls.newInstance();
+    }
+
     public static Object rawCreate(String className, ClassLoader loader)
-            throws ClassNotFoundException, IllegalAccessException,
-            InstantiationException {
+            throws ClassNotFoundException, IllegalAccessException, InstantiationException {
         return loadClass(className, loader).newInstance();
     }
 

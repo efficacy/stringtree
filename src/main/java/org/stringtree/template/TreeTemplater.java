@@ -48,7 +48,12 @@ public class TreeTemplater extends RecursiveTemplater {
     	Object ret = templates.getObject(path);
     	if (null == ret) return null;
     	
-    	if (path.contains("/")) {
+    	ret = applyPrologueEpilogue(path, ret);
+        return ret;
+    }
+
+	public Object applyPrologueEpilogue(String path, Object ret) {
+		if (path.contains("/")) {
     		StringBuffer parent = new StringBuffer();
     		List<Object> prologues = new ArrayList<Object>();
     		List<Object> epilogues = new ArrayList<Object>();
@@ -69,8 +74,8 @@ public class TreeTemplater extends RecursiveTemplater {
     			ret = combined;
     		}
     	}
-        return ret;
-    }
+		return ret;
+	}
 
     /**
      * expand a directly-supplied template, which may be a String or a Tract,

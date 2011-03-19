@@ -306,7 +306,6 @@ public class InMemoryBytesMessage extends InMemoryMessage implements BytesMessag
 		}
     }
 
-	@Override
 	public long getBodyLength() throws JMSException {
 		return data.size();
 	}

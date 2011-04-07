@@ -99,6 +99,10 @@ public class UserLevelTest extends TestCase {
 		assertFalse("wiki example page actual output is blank", StringUtils.isBlank(actual));
 
 FileWritingUtils.writeFile("testfiles/" + title + "-actual.html", actual);
-		assertEquals("wiki page example", expected, actual);
+		assertEquals("wiki page example", normaliseLines(expected), normaliseLines(actual));
+	}
+
+	private String normaliseLines(String s) {
+		return null==s ? null : s.replace("\r", "");
 	}
 }

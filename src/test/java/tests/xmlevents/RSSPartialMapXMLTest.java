@@ -85,8 +85,8 @@ public class RSSPartialMapXMLTest extends TestCase {
         assertEquals("Stringtree", dc_creator);
         assertEquals("Projects", item.get("category"));
         assertEquals("http://blog.stringtree.org/2008/01/31/slight-improvement-to-stringtree-xml-parser/", item.get("guid"));
-        assertEquals("\tSomeone just pointed out that the light-weight XML parser included in Stringtree did not handle explicit CDATA blocks. The version in SVN now has provisional support for this.\n\tIf you need a simple and fast parser for textual data, then this should be all you need. For XML documents containing opaque binary data in a CDATA [...]", item.get("description"));
-        assertEquals("\t<p>Someone just pointed out that the light-weight <a href=\"http://stringtree.svn.sourceforge.net/svnroot/stringtree/trunk/src/delivery/java/org/stringtree/xml/XMLReader.java\">XML parser</a> included in Stringtree did not handle explicit CDATA blocks. The version in SVN now has provisional support for this.</p>\n\t<p>If you need a simple and fast parser for textual data, then this should be all you need. For XML documents containing opaque binary data in a CDATA block, this may not be ideal. Currently CDATA blocks are loaded as String objects, and this can lead to incorrect data for bytes which do not represent valid characters in the current character set.</p>\n\t<p>I am currently planning for the next version of the Stringtree XMLReader to offer the option of extracting a CDATA block as an unprocessed byte array.\n</p>\n", item.get("content:encoded"));
+        assertEquals(normaliseLines("\tSomeone just pointed out that the light-weight XML parser included in Stringtree did not handle explicit CDATA blocks. The version in SVN now has provisional support for this.\r\n\tIf you need a simple and fast parser for textual data, then this should be all you need. For XML documents containing opaque binary data in a CDATA [...]"), normaliseLines(item.get("description").toString()));
+        assertEquals(normaliseLines("\t<p>Someone just pointed out that the light-weight <a href=\"http://stringtree.svn.sourceforge.net/svnroot/stringtree/trunk/src/delivery/java/org/stringtree/xml/XMLReader.java\">XML parser</a> included in Stringtree did not handle explicit CDATA blocks. The version in SVN now has provisional support for this.</p>\r\n\t<p>If you need a simple and fast parser for textual data, then this should be all you need. For XML documents containing opaque binary data in a CDATA block, this may not be ideal. Currently CDATA blocks are loaded as String objects, and this can lead to incorrect data for bytes which do not represent valid characters in the current character set.</p>\r\n\t<p>I am currently planning for the next version of the Stringtree XMLReader to offer the option of extracting a CDATA block as an unprocessed byte array.\r\n</p>\r\n"), normaliseLines(item.get("content:encoded")));
     }
     
     public void testFull() throws IOException {
@@ -104,4 +104,8 @@ public class RSSPartialMapXMLTest extends TestCase {
         assertEquals("Slight Improvement to Stringtree XML Parser", items.get(0).get("title"));
         assertEquals("Stringtree Maven Repository", items.get(1).get("title"));
     }
+
+	private String normaliseLines(String s) {
+		return null==s ? null : s.replace("\r", "");
+	}
 }

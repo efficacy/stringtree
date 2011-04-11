@@ -75,19 +75,26 @@ public class StreamUtils {
         return ret.toByteArray();
     }
 
+    static class Stepper {
+    	public int sofar;
+    	public int max;
+    	public Stepper(int max) {
+    		this.sofar = 0;
+    		this.max = max;
+    	}
+    }
+    
     public static String readStream(InputStream in, int len, boolean autoclose) throws IOException {
+    	Stepper stepper = new Stepper(len);
         if (in == null) throw new IOException("null input stream");
         StringBuffer ret = new StringBuffer();
 
         try {
             in = ensureBuffered(in);
-            int n = 0;
-            int c = in.read();
+            int c = readNext(in, stepper);
             while ( -1 != c ) {
                 ret.append((char) c);
-                ++n;
-                if (n >= len) break;
-                c = in.read();
+                c = readNext(in, stepper);
             }
         } finally {
             if (autoclose) {
@@ -97,6 +104,12 @@ public class StreamUtils {
 
         return ret.toString();
     }
+
+	public static int readNext(InputStream in, Stepper stepper) throws IOException {
+		if (stepper.sofar >= stepper.max) return -1;
+		++stepper.sofar;
+		return in.read();
+	}
     
     public static String readLine(InputStream in, EndOfTheLine eol) throws IOException {
         if (in == null) throw new IOException("null input stream");

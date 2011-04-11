@@ -54,9 +54,20 @@ public class EasyTemplater extends DirectFetcherTemplater implements Repository 
         return collector.toString();
     }
 
+    public String toString(Object template) {
+        ByteArrayStringCollector collector = expand(template);
+        return collector.toString();
+    }
+
     private ByteArrayStringCollector expand(String templateName) {
         ByteArrayStringCollector collector = new ByteArrayStringCollector();
         expand(context, templateName, collector);
+        return collector;
+    }
+
+    private ByteArrayStringCollector expand(Object template) {
+        ByteArrayStringCollector collector = new ByteArrayStringCollector();
+        expandTemplate(context, template, collector);
         return collector;
     }
 

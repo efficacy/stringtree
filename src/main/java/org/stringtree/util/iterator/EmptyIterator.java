@@ -2,7 +2,7 @@ package org.stringtree.util.iterator;
 
 import java.util.NoSuchElementException;
 
-@SuppressWarnings("unchecked")
+@SuppressWarnings("rawtypes")
 public class EmptyIterator extends AbstractIterator {
     
     private static EmptyIterator it = new EmptyIterator();

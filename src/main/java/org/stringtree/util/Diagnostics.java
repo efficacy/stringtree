@@ -33,7 +33,7 @@ class DefaultDumpLine implements DumpLine {
     }
 }
 
-@SuppressWarnings("unchecked")
+@SuppressWarnings("rawtypes")
 public class Diagnostics {
     
     public static final DumpLine dflDumpLine = new DefaultDumpLine();
@@ -54,7 +54,8 @@ public class Diagnostics {
 		out.println("Map: end of   [" + title + "] ---------------");
 	}
 
-    private static void dumpMap(Map<String, ?> map, DumpLine line, 
+    @SuppressWarnings("unchecked")
+	private static void dumpMap(Map<String, ?> map, DumpLine line, 
             Set<Object> exclude, String indent, PrintStream out) {
         Set<String> fetchers = new HashSet<String>();
 
@@ -121,7 +122,8 @@ public class Diagnostics {
         out.println("Fetcher: end of   [" + title + "] ---------------");
     }
 
-    private static void dumpFetcher(Fetcher fetcher, DumpLine line, Set<Object> exclude, String indent, PrintStream out) {
+    @SuppressWarnings("unchecked")
+	private static void dumpFetcher(Fetcher fetcher, DumpLine line, Set<Object> exclude, String indent, PrintStream out) {
         Set<String> fetchers = new HashSet<String>();
         
         Listable listable = null;

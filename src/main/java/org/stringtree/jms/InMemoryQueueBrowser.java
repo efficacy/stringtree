@@ -24,7 +24,7 @@ public class InMemoryQueueBrowser implements QueueBrowser {
     public void close() {
     }
 
-    @SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	public Enumeration getEnumeration() {
         return new IteratorEnumeration(queue.iterator());
     }

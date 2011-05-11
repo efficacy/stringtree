@@ -61,7 +61,8 @@ public class SpecReaderTest extends TestCase {
         assertEquals("value6", context.getObject("equal 2 space"));
     }
 
-    public void testArray() throws IOException {
+    @SuppressWarnings("rawtypes")
+	public void testArray() throws IOException {
         SpecReader.load(context, BASEDIR + "array.spec");
 
         assertTrue(new Checklist<String>( "one" ).check(
@@ -81,7 +82,8 @@ public class SpecReaderTest extends TestCase {
             ).check((List) context.getObject("states")));
     }
 
-    public void testCSV() throws IOException {
+    @SuppressWarnings("rawtypes")
+	public void testCSV() throws IOException {
         SpecReader.load(context, BASEDIR + "csv.spec");
 
         assertTrue(new Checklist<String>( "one" ).check(
@@ -145,7 +147,8 @@ public class SpecReaderTest extends TestCase {
         assertEquals("changed", context.get("link"));
     }
 
-    public void testArrayCreate() throws IOException {
+    @SuppressWarnings("rawtypes")
+	public void testArrayCreate() throws IOException {
         SpecReader.load(context, BASEDIR + "arraycreate.spec");
 
         assertTrue(new Checklist<DummyClass>( dummy1, dummy2, dummy3 ).check(
@@ -168,14 +171,16 @@ public class SpecReaderTest extends TestCase {
         assertTrue(context.getObject("json") instanceof Map);
     }
 
-    public void testArrayIndirect() throws IOException {
+    @SuppressWarnings("rawtypes")
+	public void testArrayIndirect() throws IOException {
         SpecReader.load(context, BASEDIR + "arrayindirect.spec");
 
         assertTrue(new Checklist<String>( " hello there ", "more stuff" ).check(
                 (List) context.getObject("array")));
     }
 
-    public void testImportCreate() throws IOException {
+    @SuppressWarnings("rawtypes")
+	public void testImportCreate() throws IOException {
         SpecReader.load(context, BASEDIR + "importcreate.spec");
 
         assertTrue(new Checklist<DummyClass>( dummy1, dummy2, dummy3 ).check(
@@ -254,6 +259,7 @@ public class SpecReaderTest extends TestCase {
         assertEquals("tail", finder.get("longer name"));
     }
     
+	@SuppressWarnings("rawtypes")
 	public void testJSON() {
         SpecReader.load(context, new String[] { 
                 "aa%=true",
@@ -279,7 +285,8 @@ public class SpecReaderTest extends TestCase {
         assertEquals("Margaret", ((List)context.getObject("fg")).get(1));
     }
     
-    public void testCombinations() {
+    @SuppressWarnings("rawtypes")
+	public void testCombinations() {
         SpecReader.load(context, new String[] { 
                 "aa$=java.lang.String hello",
                 "bb$\"=  \"java.lang.String hello\"",

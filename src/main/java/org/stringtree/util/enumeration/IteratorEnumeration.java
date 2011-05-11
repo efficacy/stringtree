@@ -3,7 +3,7 @@ package org.stringtree.util.enumeration;
 import java.util.Enumeration;
 import java.util.Iterator;
 
-@SuppressWarnings("unchecked")
+@SuppressWarnings("rawtypes")
 public class IteratorEnumeration implements Enumeration {
     
 	private Iterator iterator;

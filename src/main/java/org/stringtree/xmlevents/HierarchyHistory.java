@@ -47,7 +47,7 @@ public class HierarchyHistory<T> implements History<T> {
 		return n < 2 ? null : history.get(n-2);
 	}
 
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings({ "unchecked", "rawtypes" })
     public Object clone() {
 	    HierarchyHistory ret = null;
 	    Stack history = (Stack)this.history.clone();

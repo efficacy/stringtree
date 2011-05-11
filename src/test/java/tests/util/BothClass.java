@@ -9,7 +9,7 @@ public class BothClass extends CreatedClass {
         ++requests;
     }
 
-    @SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	public BothClass(HashMap map) {
         contents = (String) map.get("greeting");
         ++requests;

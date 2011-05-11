@@ -3,7 +3,7 @@ package tests.json;
 import java.util.List;
 import java.util.Map;
 
-@SuppressWarnings("unchecked")
+@SuppressWarnings("rawtypes")
 public class JSONReaderObjectTest extends JSONTestCase {
 
 	Map map;

@@ -17,7 +17,6 @@ public abstract class SimpleHandler implements Handler {
         list.close(context);
     }
 
-    @SuppressWarnings("unchecked")
 	public Object parse(String name, Object value) {
         Object ret = value;
 
@@ -30,7 +29,7 @@ public abstract class SimpleHandler implements Handler {
         return ret;
     }
 
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings({ "unchecked", "rawtypes" })
 	protected Object parseCreated(String name, Object value) {
         List<Object> list = new SpecList<Object>();
         Iterator<Object> it = ((CreatedHere) value).iterator();

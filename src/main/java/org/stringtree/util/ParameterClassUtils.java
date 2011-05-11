@@ -6,7 +6,7 @@ import java.lang.reflect.InvocationTargetException;
 import org.stringtree.Fetcher;
 import org.stringtree.SystemContext;
 
-@SuppressWarnings("unchecked")
+@SuppressWarnings("rawtypes")
 public class ParameterClassUtils {
     
 	private static final Class[] SINGLE_STRING_CLASS_ARRAY = new Class[] { String.class };
@@ -23,7 +23,8 @@ public class ParameterClassUtils {
         }
 
         try {
-            Constructor cx = c.getConstructor(types);
+            @SuppressWarnings("unchecked")
+			Constructor cx = c.getConstructor(types);
             ret = cx.newInstance(args);
         } catch (NoSuchMethodException nsme) {
             // No constructor taking parameters, so try the no-arg one instead

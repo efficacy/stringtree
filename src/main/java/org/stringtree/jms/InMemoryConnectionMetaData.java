@@ -8,7 +8,7 @@ import org.stringtree.util.enumeration.EmptyEnumeration;
 
 public class InMemoryConnectionMetaData implements ConnectionMetaData {
     
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings("rawtypes")
 	private static final Enumeration empty = new EmptyEnumeration();
 
     public String getJMSVersion() {
@@ -39,7 +39,7 @@ public class InMemoryConnectionMetaData implements ConnectionMetaData {
         return 1;
     }
 
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings("rawtypes")
 	public Enumeration getJMSXPropertyNames() {
         return empty;
     }

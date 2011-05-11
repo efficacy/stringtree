@@ -12,7 +12,7 @@ public class ListableHelper {
     
     private static final Set<String> empty = Collections.emptySet();
 
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings({ "unchecked", "rawtypes" })
     public static Listable<String> getListable(Fetcher fetcher) {
         if (fetcher instanceof Listable)
             return ((Listable) fetcher);

@@ -16,7 +16,7 @@ public class PluginManager {
     public static final String PLUGIN_TEMPLATE = "plugin_template";
     public static final String PLUGIN_METHOD_NAME = "plugin_method_name";
 
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings("rawtypes")
 	public String get(StringKeeper context, String name) {
         Collection plugins = (Collection) context.getObject(PLUGINS);
         Templater templater = (Templater) context.getObject(Templater.TEMPLATER);

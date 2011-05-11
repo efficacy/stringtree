@@ -168,7 +168,7 @@ public class InMemoryMessage implements Message, Cloneable {
         return properties.get(name);
     }
 
-    @SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	public Enumeration getPropertyNames() {
         return properties.propertyNames();
     }

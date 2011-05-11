@@ -6,10 +6,11 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
-@SuppressWarnings("unchecked")
+@SuppressWarnings("rawtypes")
 public class Sorter2<T extends Comparable> {
     
-    public List<T> sort(Object obj) {
+    @SuppressWarnings("unchecked")
+	public List<T> sort(Object obj) {
         List<T> list = null;
         if (obj instanceof List) {
             list = (List<T>)obj;

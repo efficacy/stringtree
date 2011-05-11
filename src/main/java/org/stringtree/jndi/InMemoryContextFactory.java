@@ -9,7 +9,7 @@ public class InMemoryContextFactory implements InitialContextFactory {
     
     private static InMemoryContext singleton = new InMemoryContext();
     
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	public Context getInitialContext(Hashtable env) {
 		return singleton;
 	}

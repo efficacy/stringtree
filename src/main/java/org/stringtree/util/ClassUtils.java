@@ -6,13 +6,13 @@ import java.io.Writer;
 
 public class ClassUtils {
     
-    @SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	protected static Class loadClass(String className, ClassLoader loader)
             throws ClassNotFoundException {
         return Class.forName(className, true, loader);
     }
 
-    @SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	public static Object rawCreate(Class cls)
             throws ClassNotFoundException, IllegalAccessException, InstantiationException {
         return cls.newInstance();

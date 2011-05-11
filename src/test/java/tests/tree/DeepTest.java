@@ -6,7 +6,7 @@ import java.util.Map;
 
 import org.stringtree.util.FileReadingUtils;
 
-@SuppressWarnings("unchecked")
+@SuppressWarnings("rawtypes")
 public class DeepTest extends XMLTestCase {
 
     public void setUp() {

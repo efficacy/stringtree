@@ -8,7 +8,7 @@ import java.util.Iterator;
 
 import org.stringtree.util.Utils;
 
-@SuppressWarnings("unchecked")
+@SuppressWarnings("rawtypes")
 public class Trees {
 	public static final Tree EMPTY_TREE = new EmptyTree();
 
@@ -36,7 +36,8 @@ public class Trees {
         }
     }
 
-    public static void dump(Tree t, Writer out, int level)
+    @SuppressWarnings("unchecked")
+	public static void dump(Tree t, Writer out, int level)
             throws java.io.IOException {
         indent(out, level);
         out.write("Tree: '" + t + "' p='" + t.getParent() + "' v='"
@@ -62,7 +63,8 @@ public class Trees {
         }
     }
 
-    public static void adopt(MutableTree parent, MutableTree child) {
+    @SuppressWarnings("unchecked")
+	public static void adopt(MutableTree parent, MutableTree child) {
         child.setParent(parent);
         parent.addChild(child);
     }

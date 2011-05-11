@@ -2,7 +2,7 @@ package org.stringtree.util.enumeration;
 
 import java.util.Enumeration;
 
-@SuppressWarnings("unchecked")
+@SuppressWarnings("rawtypes")
 public class EmptyEnumeration implements Enumeration {
 	
     public boolean hasMoreElements() {

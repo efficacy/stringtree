@@ -14,7 +14,7 @@ import org.stringtree.workflow.StateMachineSpec;
 
 import junit.framework.TestCase;
 
-@SuppressWarnings("unchecked")
+@SuppressWarnings("rawtypes")
 public class LoaderTest extends TestCase {
     
 	StateMachineSpec spec;

@@ -35,7 +35,7 @@ public class GuidGenerator implements IdSource {
         return generator.next();
     }
 
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings("rawtypes")
 	private String environment() {
         StringBuffer raw = new StringBuffer();
         

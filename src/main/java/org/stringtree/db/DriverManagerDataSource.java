@@ -86,12 +86,12 @@ public class DriverManagerDataSource implements DataSource {
 		return DriverManager.getLoginTimeout();
 	}
 	
-    @SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	public boolean isWrapperFor(Class clz) {
         return false;
     }
 
-    @SuppressWarnings("unchecked")
+	@SuppressWarnings({ "rawtypes", "unchecked" })
     public Object unwrap(Class clz) throws SQLException {
         throw new SQLException("Not a Wrapper for " + clz);
     }

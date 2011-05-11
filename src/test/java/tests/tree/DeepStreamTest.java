@@ -6,7 +6,7 @@ import java.util.Map;
 
 import org.stringtree.util.FileReadingUtils;
 
-@SuppressWarnings("unchecked")
+@SuppressWarnings("rawtypes")
 public class DeepStreamTest extends XMLStreamTestCase {
 
     public void setUp() {

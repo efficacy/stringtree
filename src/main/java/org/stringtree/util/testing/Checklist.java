@@ -210,12 +210,12 @@ public class Checklist<T> {
     }
 
 
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings("rawtypes")
 	public static boolean compareSubset(int n, Object[] expected, Collection actual) {
     	return compareSubset(n, Arrays.asList(expected), actual);
     }
 
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings("rawtypes")
 	public static boolean compareSubset(int n, Collection expected, Collection actual) {
     	if (actual.size() != n) return false;
     	

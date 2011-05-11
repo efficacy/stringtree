@@ -4,13 +4,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import junit.framework.TestCase;
+
 import org.stringtree.util.iterator.Spliterator;
 import org.stringtree.xml.XMLReader;
 import org.stringtree.xml.XReader;
 
-import junit.framework.TestCase;
-
-@SuppressWarnings("unchecked")
+@SuppressWarnings("rawtypes")
 public class XMLTestCase extends TestCase {
 
     XReader reader;

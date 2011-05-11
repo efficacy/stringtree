@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.stringtree.json.JSONReader;
 
-@SuppressWarnings("unchecked")
+@SuppressWarnings("rawtypes")
 public class JSONReaderOverallTest extends JSONTestCase {
     List list;
     

@@ -203,7 +203,7 @@ public class SpecProcessor {
         }
     }
 
-    @SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	public void read(StringFinder values) {
         if (values instanceof Listable) {
             Iterator it = ((Listable)values).list();

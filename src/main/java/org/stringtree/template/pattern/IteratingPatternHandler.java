@@ -26,7 +26,7 @@ public class IteratingPatternHandler implements TemplatePatternHandler {
     private static final String NL = System.getProperty("line.separator");
     private static final String QUOTED_NEWLINE = "'" + NL + "'";
 
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings({"unchecked", "rawtypes"})
     public Object getObject(String name, StringFinder context,
             Templater templater, StringCollector collector) {
         int times = name.indexOf('*');

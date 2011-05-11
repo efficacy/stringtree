@@ -5,7 +5,7 @@ import org.stringtree.util.MethodWrapper;
 
 public abstract class MethodCallHandler extends ContextHandler {
     
-    @SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	static Class[] objectType = new Class[] { Object.class };
 
     protected String methodName;

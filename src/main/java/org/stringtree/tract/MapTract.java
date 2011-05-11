@@ -34,7 +34,7 @@ public class MapTract extends FetcherTract {
         setAttributes(other);
     }
 
-    @SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	public void setAttributes(StringFinder other) {
         if (other instanceof Listable) {
             Iterator it = ((Listable)other).list();

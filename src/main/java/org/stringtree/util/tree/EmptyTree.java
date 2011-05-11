@@ -16,7 +16,7 @@ public class EmptyTree<T> implements Tree<T> {
         return Collections.emptyList();
     }
 
-    @SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	public boolean equals(Object other) {
         return (other instanceof Tree) ? Trees.equals(this, (Tree)other) : false;
     }

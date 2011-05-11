@@ -13,7 +13,7 @@ public class CachedTree<T> extends ProxyTree<T> {
         super(parent, children, value);
     }
 
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings("rawtypes")
 	public int getCachedStatus() {
         int ret = Cached.FULL;
         if (value != null && value instanceof Cached) {

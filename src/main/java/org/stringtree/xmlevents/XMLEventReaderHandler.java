@@ -19,7 +19,7 @@ public class XMLEventReaderHandler implements XMLEventHandler {
         stack = new Stack<Object>();
     }
 
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings({ "unchecked", "rawtypes" })
     public Object handle(XMLEvent event, History<String> history, Map<String, String> args, Object context, int line, int column) {
         Map<String, Object> map = (Map<String, Object>)context;
 System.err.println("handle event=" + event + " history=" + history.history() + " args=" + args + " map=" + map);

@@ -96,7 +96,7 @@ abstract class MethodFinder {
     public abstract MethodWrapper find(Object object);
 }
 
-@SuppressWarnings("unchecked")
+@SuppressWarnings("rawtypes")
 public class MethodCallUtils {
     public static final String MATCHED_METHOD = "MethodCallUtils.matched.method";
     public static final String TARGET_EXCEPTION = "stringtree.target.exception";
@@ -194,7 +194,8 @@ public class MethodCallUtils {
         return ret;
     }
 
-    private static void recordException(Object location, Throwable actual) {
+    @SuppressWarnings("unchecked")
+	private static void recordException(Object location, Throwable actual) {
         if (location instanceof Fetcher) {
             Fetcher context = (Fetcher)location;
             List<Throwable> exceptions = (List<Throwable>) context.getObject(TARGET_EXCEPTION);

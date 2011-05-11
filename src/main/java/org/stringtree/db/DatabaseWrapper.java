@@ -267,26 +267,26 @@ System.err.println("db.script [" + line + "]");
     	scriptResource(loader, filename, ";");
     }
     
-    @SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	public void scriptResource(Class self, String filename, String sep) throws SQLException, IOException {
        	InputStream resourceStream = self.getResourceAsStream(filename);
        	if (null == resourceStream) throw new IOException("cannot find resource '" + filename + "'");
     	script(resourceStream, sep);
     }
     
-    @SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	public void scriptResource(Class self, String filename, StringFinder context, String sep) throws SQLException, IOException {
        	InputStream resourceStream = self.getResourceAsStream(filename);
        	if (null == resourceStream) throw new IOException("cannot find resource '" + filename + "'");
     	script(resourceStream, context, sep);
     }
     
-    @SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	public void scriptResource(Class self, String filename, StringFinder context) throws SQLException, IOException {
     	scriptResource(self, filename, context, ";");
     }
 
-    @SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	public void scriptResource(Class self, String filename) throws SQLException, IOException {
     	scriptResource(self, filename, ";");
     }

@@ -2,7 +2,7 @@ package tests.json;
 
 import java.util.List;
 
-@SuppressWarnings("unchecked")
+@SuppressWarnings("rawtypes")
 public class JSONReaderArrayTest extends JSONTestCase {
 	List array;
 

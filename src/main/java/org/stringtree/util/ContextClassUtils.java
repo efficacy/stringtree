@@ -7,7 +7,7 @@ import org.stringtree.finder.StringFinder;
 
 public class ContextClassUtils {
     
-    @SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	public static Object create(String name, Object[] params, Class[] types,
             StringFinder context) {
         return PackageParameterClassUtils.create(name, params, types,
@@ -15,7 +15,7 @@ public class ContextClassUtils {
                 getClassLoader(context));
     }
 
-    @SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	public static Object createObject(String def, StringFinder context, boolean init) {
         Object object = PackageParameterClassUtils.create(def, (List) context
                 .getObject(SystemContext.IMPORT_PACKAGES),
@@ -24,7 +24,7 @@ public class ContextClassUtils {
         return object;
     }
 
-    @SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	public static Object createObject(String name, String param,
             StringFinder context, boolean init) {
         Object object = PackageParameterClassUtils.create(name, new Object[] { param },

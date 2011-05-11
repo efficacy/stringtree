@@ -3,7 +3,7 @@ package org.stringtree.util;
 import java.util.Iterator;
 import java.util.List;
 
-@SuppressWarnings("unchecked")
+@SuppressWarnings("rawtypes")
 public class PackageParameterClassUtils {
     
 	public static Object create(String className, Object[] params,

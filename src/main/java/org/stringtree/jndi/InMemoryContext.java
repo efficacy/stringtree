@@ -21,7 +21,7 @@ import javax.naming.NotContextException;
 import javax.naming.OperationNotSupportedException;
 import javax.naming.spi.NamingManager;
 
-@SuppressWarnings("unchecked")
+@SuppressWarnings({"unchecked", "rawtypes"})
 public class InMemoryContext implements Context {
     
 	protected static final NameParser myParser = new NameParser() {

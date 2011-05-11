@@ -88,7 +88,7 @@ public class SimpleTree<T> extends EmptyTree<T> implements MutableTree<T> {
      * note - don't be tempted to add a comparison for "parent", as it recurses
      * straight back down to here again!
      */
-    @SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	public boolean equals(Object obj) {
         if (!(obj instanceof SimpleTree)) return false;
         

@@ -145,7 +145,7 @@ public class XMLEventParser {
 		return map;
 	}
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "unchecked", "rawtypes" })
     public Object process(Reader in, XMLEventHandler handler, History history, Object context) throws IOException {
 		int tagType = 0;
 		int status = 0;

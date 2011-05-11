@@ -48,7 +48,7 @@ public class InMemoryMapMessage extends InMemoryMessage implements MapMessage {
         return (Long)payload.get(key);
     }
 
-    @SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	public Enumeration getMapNames() {
         return new IteratorEnumeration(payload.keySet().iterator());
     }

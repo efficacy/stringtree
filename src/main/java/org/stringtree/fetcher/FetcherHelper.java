@@ -60,7 +60,7 @@ public class FetcherHelper {
         dump(title, context, System.out);
     }
 
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings({ "unchecked", "rawtypes" })
 	public static Map<String,Object> asMap(Fetcher fetcher) {
         Listable<String> list = (Listable) fetcher.getObject(Listable.LIST);
         Map<String, Object> ret = new HashMap<String, Object>();

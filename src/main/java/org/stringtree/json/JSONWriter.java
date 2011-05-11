@@ -51,7 +51,7 @@ public class JSONWriter {
         return String.valueOf(b);
     }
 
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings({ "unchecked", "rawtypes" })
 	protected void value(Object object) {
         if (object == null || cyclic(object)) {
             add("null");

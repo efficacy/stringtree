@@ -43,6 +43,13 @@ public class EasyTemplaterTest extends TestCase {
         assertEquals("hello Frank", templater.toString("tpl1"));
     }
     
+    public void testIteration() {
+        templates.put("person", "[${this}]");
+        templates.put("ugh", "hello there, ${family*person/','}!");
+        templater.put("family", Arrays.asList("Frank", "Margaret", "Elizabeth", "Katherine"));
+        assertEquals("hello there, [Frank],[Margaret],[Elizabeth],[Katherine]!", templater.toString("ugh"));
+    }
+    
     public void testGetAsByteArray() {
         templates.put("tpl1", "ugh");
         assertTrue(Arrays.equals(new byte[] { 'u', 'g', 'h'}, templater.toBytes("tpl1")));

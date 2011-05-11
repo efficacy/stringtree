@@ -21,7 +21,7 @@ public class RecordingProxy extends RecordingMock implements InvocationHandler {
         return null;
     }
 
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings({ "unchecked", "rawtypes" })
 	public Object createProxy(Class class1) {
         try {
             Class proxyClass = Proxy.getProxyClass(

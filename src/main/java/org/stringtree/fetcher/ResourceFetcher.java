@@ -12,7 +12,7 @@ import org.stringtree.fetcher.filter.RepositoryResourceFilter;
 import org.stringtree.util.enumeration.EmptyEnumeration;
 import org.stringtree.util.iterator.EnumerationIterator;
 
-@SuppressWarnings("unchecked")
+@SuppressWarnings("rawtypes")
 public class ResourceFetcher implements Fetcher, Listable {
     
     private ClassLoader loader;
@@ -67,7 +67,8 @@ public class ResourceFetcher implements Fetcher, Listable {
         return ret;
     }
 
-    public Iterator list() {
+    @SuppressWarnings("unchecked")
+	public Iterator list() {
         Enumeration en = new EmptyEnumeration();
         try {
             en = loader.getResources("com/io_content/services/exposed/xsl");

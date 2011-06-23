@@ -6,8 +6,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.io.PrintStream;
 import java.io.StringBufferInputStream;
+import java.io.Writer;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,7 +17,6 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import javax.naming.InitialContext;
@@ -24,15 +25,21 @@ import javax.sql.DataSource;
 
 import org.stringtree.finder.StringFinder;
 import org.stringtree.template.InlineTemplater;
+import org.stringtree.timing.StopWatch;
 import org.stringtree.util.ExceptionHandler;
 import org.stringtree.util.ReaderUtils;
 import org.stringtree.util.ResourceUtils;
 import org.stringtree.util.StderrExceptionHandler;
 import org.stringtree.util.StreamUtils;
+import org.stringtree.util.StringUtils;
 
 @SuppressWarnings("deprecation")
 public class DatabaseWrapper {
     protected static final String scriptfile = "dbscripts.properties";
+    protected static final String QUERY =  "QUERY  ";
+    protected static final String UPDATE = "UPDATE ";
+    protected static final String SCRIPT = "SCRIPT ";
+    protected static final String TIMING = "TIMING ";
 
     private static final StatementPopulator dummyPopulator = new StatementPopulator() {
         public void populate(PreparedStatement ps) {
@@ -42,6 +49,7 @@ public class DatabaseWrapper {
     
     private DataSource ds = null;
     private ExceptionHandler logger = StderrExceptionHandler.it;
+    private Writer commentWriter = null;
 
     protected void init(DataSource datasource, ExceptionHandler logger) {
         this.ds = datasource;
@@ -70,26 +78,61 @@ public class DatabaseWrapper {
     public DatabaseWrapper(String jndiName) throws NamingException {
         init(jndiName);
     }
+    
+    public void setCommentWriter(Writer verbose) {
+    	this.commentWriter = verbose;
+    }
+    
+    public void setVerbose(boolean verbose) {
+    	if (verbose) {
+    		setCommentWriter(new OutputStreamWriter(System.err));
+    	} else {
+    		setCommentWriter(null);
+    	}
+    }
+    
+    private void comment(String action, Object... messages) {
+    	if (null == commentWriter) return;
+    	try {
+			commentWriter.write("db.");
+	    	commentWriter.write(action);
+	    	commentWriter.write(" ");
+	    	comment(messages);
+	    	commentWriter.flush();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+    }
+
+	public void comment(Object... messages) throws IOException {
+		for (Object message : messages) {
+			if (message instanceof Object[]) {
+				comment(message);
+			} else {
+				commentWriter.write(StringUtils.stringValue(message, "null"));
+			}
+		}
+	}
 
     public Object query(String sql, RowListener listener) {
-System.err.println("db.query  [" + sql + "]");
+    	comment(QUERY, sql);
         return query(sql, dummyPopulator, listener);
     }
 
     public Object query(LiteralListener listener) {
         String sql = listener.getSQL();
-System.err.println("db.query  [" + sql + "]");
+        comment(QUERY, sql);
 		return query(sql, dummyPopulator, listener);
     }
 
     public Object query(LiteralPopulatorListener literal) {
         String sql = literal.getSQL();
-System.err.println("db.query  [" + sql + "]");
+        comment(QUERY, sql);
 		return query(sql, literal, literal);
     }
 
     public Object singleValueQuery(String script) {
-System.err.println("db.query  [" + script + "]");
+    	comment(QUERY, script);
         return query(script, dummyPopulator, new SingleValueResultListener());
     }
 
@@ -98,7 +141,7 @@ System.err.println("db.query  [" + script + "]");
     }
 
     public Object query(String sql, StatementPopulator populator, RowListener listener) {
-//StopWatch watch = new StopWatch();
+    	StopWatch watch = new StopWatch();
         try {
             Connection connection = null;
             PreparedStatement ps = null;
@@ -129,7 +172,6 @@ System.err.println("db.query  [" + script + "]");
                 if (connection != null) {
                     connection.close();
                 }
-//System.err.println(".. took " + watch.sofar() + "ms");
             }
             
             return ret;
@@ -137,23 +179,23 @@ System.err.println("db.query  [" + script + "]");
             if (null != logger) logger.handle(e, sql);
         }
         
-//System.err.println(".. took " + watch.sofar() + "ms");
+        comment(TIMING, watch.sofar(), "ms: ", sql);
         return null;
     }
 
     public Object query(String sql, RowListener listener, Object... args) {
-System.err.println("db.query  [" + sql + "] args=" + Arrays.toString(args));
+    	comment(QUERY, sql, " args=[", args, "]");
     	return query(sql, new ArrayPopulator(args), listener);
     }
     
     public int update(LiteralPopulator populator) {
         String sql = populator.getSQL();
-System.err.println("db.update [" + sql + "]");
+        comment(UPDATE, sql);
 		return update(sql, populator);
     }
 
     public int update(String sql) {
-System.err.println("db.update [" + sql + "]");
+        comment(UPDATE, sql);
         return update(sql, dummyPopulator);
     }
 
@@ -163,12 +205,12 @@ System.err.println("db.update [" + sql + "]");
     }
 
     public int update(String sql, Object... args) {
-System.err.println("db.update [" + sql + "] args=" + Arrays.toString(args));
+    	comment(UPDATE, sql, " args=[", args, "]");
         return update(sql, new ArrayPopulator(args));
     }
 
     public int update(String sql, List<Object> args) {
-System.err.println("db.update [" + sql + "] args=" + args);
+    	comment(UPDATE, sql, " args=[", args, "]");
         return update(sql, new ArrayPopulator(args));
     }
 
@@ -229,7 +271,7 @@ System.err.println("db.update [" + sql + "] args=" + args);
 		if (line.length() > 0) {
 		    st = connection.createStatement();
 		    try {
-System.err.println("db.script [" + line + "]");
+		    	comment(SCRIPT, line);
 		        st.execute(line);
 		    } finally {
 		        st.close();

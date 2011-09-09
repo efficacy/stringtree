@@ -72,24 +72,24 @@ public class DatabaseWrapper {
     }
 
     public Object query(String sql, RowListener listener) {
-System.err.println("db.query  [" + sql + "]");
+// System.err.println("db.query  [" + sql + "]");
         return query(sql, dummyPopulator, listener);
     }
 
     public Object query(LiteralListener listener) {
         String sql = listener.getSQL();
-System.err.println("db.query  [" + sql + "]");
+// System.err.println("db.query  [" + sql + "]");
 		return query(sql, dummyPopulator, listener);
     }
 
     public Object query(LiteralPopulatorListener literal) {
         String sql = literal.getSQL();
-System.err.println("db.query  [" + sql + "]");
+// System.err.println("db.query  [" + sql + "]");
 		return query(sql, literal, literal);
     }
 
     public Object singleValueQuery(String script) {
-System.err.println("db.query  [" + script + "]");
+// System.err.println("db.query  [" + script + "]");
         return query(script, dummyPopulator, new SingleValueResultListener());
     }
 
@@ -142,18 +142,18 @@ System.err.println("db.query  [" + script + "]");
     }
 
     public Object query(String sql, RowListener listener, Object... args) {
-System.err.println("db.query  [" + sql + "] args=" + Arrays.toString(args));
+// System.err.println("db.query  [" + sql + "] args=" + Arrays.toString(args));
     	return query(sql, new ArrayPopulator(args), listener);
     }
     
     public int update(LiteralPopulator populator) {
         String sql = populator.getSQL();
-System.err.println("db.update [" + sql + "]");
+// System.err.println("db.update [" + sql + "]");
 		return update(sql, populator);
     }
 
     public int update(String sql) {
-System.err.println("db.update [" + sql + "]");
+// System.err.println("db.update [" + sql + "]");
         return update(sql, dummyPopulator);
     }
 
@@ -163,12 +163,12 @@ System.err.println("db.update [" + sql + "]");
     }
 
     public int update(String sql, Object... args) {
-System.err.println("db.update [" + sql + "] args=" + Arrays.toString(args));
+// System.err.println("db.update [" + sql + "] args=" + Arrays.toString(args));
         return update(sql, new ArrayPopulator(args));
     }
 
     public int update(String sql, List<Object> args) {
-System.err.println("db.update [" + sql + "] args=" + args);
+// System.err.println("db.update [" + sql + "] args=" + args);
         return update(sql, new ArrayPopulator(args));
     }
 
@@ -229,7 +229,7 @@ System.err.println("db.update [" + sql + "] args=" + args);
 		if (line.length() > 0) {
 		    st = connection.createStatement();
 		    try {
-System.err.println("db.script [" + line + "]");
+// System.err.println("db.script [" + line + "]");
 		        st.execute(line);
 		    } finally {
 		        st.close();

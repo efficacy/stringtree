@@ -105,11 +105,14 @@ public class DatabaseWrapper {
     }
 
 	public void comment(Object... messages) throws IOException {
+		if (null == messages || 0 == messages.length) return;
+		
 		for (Object message : messages) {
 			if (message instanceof Object[]) {
-				comment(message);
+				messages = (Object[])message;
+				if (messages.length > 0) comment(messages);
 			} else {
-				commentWriter.write(StringUtils.stringValue(message, "null"));
+				commentWriter.write(StringUtils.stringValue(message, "null") + "");
 			}
 		}
 	}

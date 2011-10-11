@@ -91,28 +91,36 @@ public class DatabaseWrapper {
     	}
     }
     
-    private void comment(String action, Object... messages) {
+    private void comment(String action, String sql, Object... messages) {
     	if (null == commentWriter) return;
     	try {
 			commentWriter.write("db.");
 	    	commentWriter.write(action);
 	    	commentWriter.write(" ");
-	    	comment(messages);
+	    	commentWriter.write(sql);
+	    	if (null != messages && messages.length > 0) {
+		    	commentWriter.write(" [");
+		    	comment(false, messages);
+		    	commentWriter.write("]");
+	    	}
 	    	commentWriter.flush();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
     }
 
-	public void comment(Object... messages) throws IOException {
+	public void comment(boolean had, Object... messages) throws IOException {
 		if (null == messages || 0 == messages.length) return;
-		
 		for (Object message : messages) {
 			if (message instanceof Object[]) {
 				messages = (Object[])message;
-				if (messages.length > 0) comment(messages);
+				if (messages.length > 0) comment(had, messages);
 			} else {
-				commentWriter.write(StringUtils.stringValue(message, "null") + "");
+				if (had) {
+					commentWriter.write(',');
+				}
+				commentWriter.write(StringUtils.stringValue(message, "null"));
+				had = true;
 			}
 		}
 	}
@@ -182,12 +190,12 @@ public class DatabaseWrapper {
             if (null != logger) logger.handle(e, sql);
         }
         
-        comment(TIMING, watch.sofar(), "ms: ", sql);
+        comment(TIMING, "clock", watch.sofar(), "ms: ", sql);
         return null;
     }
 
     public Object query(String sql, RowListener listener, Object... args) {
-    	comment(QUERY, sql, " args=[", args, "]");
+    	comment(QUERY, sql, args);
     	return query(sql, new ArrayPopulator(args), listener);
     }
     
@@ -208,12 +216,12 @@ public class DatabaseWrapper {
     }
 
     public int update(String sql, Object... args) {
-    	comment(UPDATE, sql, " args=[", args, "]");
+    	comment(UPDATE, sql, args);
         return update(sql, new ArrayPopulator(args));
     }
 
     public int update(String sql, List<Object> args) {
-    	comment(UPDATE, sql, " args=[", args, "]");
+    	comment(UPDATE, sql, args);
         return update(sql, new ArrayPopulator(args));
     }
 

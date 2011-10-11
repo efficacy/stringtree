@@ -91,7 +91,7 @@ public class DatabaseWrapper {
     	}
     }
     
-    private void comment(String action, String sql, Object... messages) {
+    protected void comment(String action, String sql, Object... messages) {
     	if (null == commentWriter) return;
     	try {
 			commentWriter.write("db.");
@@ -109,7 +109,7 @@ public class DatabaseWrapper {
 		}
     }
 
-	public void comment(boolean had, Object... messages) throws IOException {
+	protected void comment(boolean had, Object... messages) throws IOException {
 		if (null == messages || 0 == messages.length) return;
 		for (Object message : messages) {
 			if (message instanceof Object[]) {

@@ -103,6 +103,7 @@ public class DatabaseWrapper {
 		    	comment(false, messages);
 		    	commentWriter.write("]");
 	    	}
+	    	commentWriter.write('\n');
 	    	commentWriter.flush();
 		} catch (IOException e) {
 			e.printStackTrace();

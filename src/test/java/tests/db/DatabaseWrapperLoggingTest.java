@@ -23,16 +23,16 @@ public class DatabaseWrapperLoggingTest extends TestCase {
 	
 	public void testSimpleUpdate() {
 		dw.update("delete from test");
-		assertEquals("db.UPDATE  delete from test", buf.toString());
+		assertEquals("db.UPDATE  delete from test\n", buf.toString());
 	}
 	
 	public void testUpdateWithOneArg() {
 		dw.update("delete from test where id=?", "xx");
-		assertEquals("db.UPDATE  delete from test where id=? [xx]", buf.toString());
+		assertEquals("db.UPDATE  delete from test where id=? [xx]\n", buf.toString());
 	}
 	
 	public void testUpdateWithTwoArgs() {
 		dw.update("delete from test where id=? or id=?", "xx", "yy");
-		assertEquals("db.UPDATE  delete from test where id=? or id=? [xx,yy]", buf.toString());
+		assertEquals("db.UPDATE  delete from test where id=? or id=? [xx,yy]\n", buf.toString());
 	}
 }

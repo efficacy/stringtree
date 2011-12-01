@@ -176,13 +176,25 @@ public class DatabaseWrapper {
                 }
             } finally {
                 if (results != null) {
-                    results.close();
+                	try {
+	                    results.close();
+                	} catch (Exception e) {
+                		logger.handle(e, "closing result set");
+                	}
                 }
                 if (ps != null) {
-                    ps.close();
+                	try {
+	                    ps.close();
+                	} catch (Exception e) {
+                		logger.handle(e, "closing statement");
+                	}
                 }
                 if (connection != null) {
-                    connection.close();
+                	try {
+                		connection.close();
+                	} catch (Exception e) {
+                		logger.handle(e, "closing sonnection");
+                	}
                 }
             }
             
@@ -240,10 +252,18 @@ public class DatabaseWrapper {
                 }
             } finally {
                 if (ps != null) {
-                    ps.close();
+                	try {
+	                    ps.close();
+                	} catch (Exception e) {
+                		logger.handle(e, "closing statement");
+                	}
                 }
                 if (connection != null) {
-                    connection.close();
+                	try {
+                		connection.close();
+                	} catch (Exception e) {
+                		logger.handle(e, "closing sonnection");
+                	}
                 }
             }
         } catch (SQLException e) {

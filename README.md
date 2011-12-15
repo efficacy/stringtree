@@ -53,3 +53,4 @@ As with other Stringtree projects, Stringtree is dual licensed. You may use it u
  
  /2011-03-09 Frank Carver/
  
+ (extra text added for legacy branch test)

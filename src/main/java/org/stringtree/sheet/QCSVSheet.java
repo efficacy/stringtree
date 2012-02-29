@@ -24,8 +24,7 @@ public class QCSVSheet {
 	public void load(Reader reader) {
 		StringIterator lines = new LineIterator(reader);
 		List<String> columns = loadColumns(lines);
-		for(int i = 0; lines.hasNext(); ++i) {
-			String line = lines.nextString();
+		for(String line : lines) {
 			Spliterator cols = new QCSVSpliterator(line);
 			String label = cols.nextString();
 			for (int c=0; cols.hasNext(); ++c) {
@@ -41,8 +40,7 @@ public class QCSVSheet {
 			String line = lines.nextString();
 			Spliterator cols = new QCSVSpliterator(line);
 			cols.nextString(); // skip corner
-			for (int i = 0; cols.hasNext(); ++i) {
-				String label = cols.nextString();
+			for (String label : cols) {
 				ret.add(label);
 			}
 		}

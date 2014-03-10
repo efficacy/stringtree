@@ -118,7 +118,7 @@ public class HTTPClient {
 		} else {
             connection.addRequestProperty(Document.CONTENT_LENGTH, "0");
 		}
-    
+
         Document ret = new Document();
         ret.addHeader(HTTP_RESPONSE_CODE, Integer.toString(connection.getResponseCode()));
         
@@ -246,7 +246,7 @@ public class HTTPClient {
 	
 	private Document contentDocument(String type, byte[] bytes) {
         Document data = new Document(bytes);
-        data.addHeader(Document.CONTENT_TYPE, type);
+        data.setHeader(Document.CONTENT_TYPE, type);
         return data;
     }
     

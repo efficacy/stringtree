@@ -2,8 +2,8 @@ package org.stringtree.http;
 
 public class NameValue {
 
-    protected String name;
-    protected String value;
+    protected final String name;
+    protected final String value;
 
     public NameValue(String name, String value) {
         this.name = name;
@@ -21,4 +21,13 @@ public class NameValue {
     public String toString() {
     	return name + ": " + value;
     }
+
+    public boolean equals(Object other) {
+        if (!(other instanceof NameValue)) return false;
+        return this.name.equals(((NameValue)other).name);
+    }
+
+	@Override public int hashCode() {
+		return ("NV:" + name).hashCode();
+	}
 }

@@ -17,9 +17,10 @@ class ObjectMethodWrapper implements MethodWrapper {
     public Method method;
     public Object[] args;
 
-    public ObjectMethodWrapper(Method method, Object[] args) {
+    public ObjectMethodWrapper(Method method, Object... args) {
         this.method = method;
         this.args = args;
+        this.method.setAccessible(true);
     }
 
     public Object invoke(Object object) throws IllegalArgumentException,

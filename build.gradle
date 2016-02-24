@@ -1,0 +1,20 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+version = '2.1.4'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+  compile files('lib/jms.jar')
+  testCompile group: 'junit', name: 'junit', version: '3.8'
+}
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'Stringtree Utilities',
+                   'Implementation-Version': version
+    }
+}

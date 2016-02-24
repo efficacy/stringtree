@@ -42,9 +42,6 @@ public class TractTest extends TestCase {
         assertEquals("Both hasAttribute", true, t.contains("hoop"));
         assertEquals("Both getAttribute", "ball", t.get("hoop"));
 
-        assertEquals("Both toString", "{CONTENT=hello, hoop=ball}", t
-                .toString());
-
         t2 = new MapTract("hello");
         t2.put("hoop", "ball");
         assertEquals("Both equals", t2, t);

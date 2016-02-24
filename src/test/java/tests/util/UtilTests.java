@@ -13,7 +13,6 @@ public class UtilTests extends TestCase {
         ret.addTest(new TestSuite(EndOfTheLineTest.class));
         ret.addTest(new TestSuite(StopWatchTest.class));
         ret.addTest(new TestSuite(GuidTest.class));
-        ret.addTest(new TestSuite(XMLTestUtilsTest.class));
         ret.addTest(new TestSuite(StringSplitterTest.class));
         ret.addTest(new TestSuite(ClassUtilTest.class));
         ret.addTest(new TestSuite(MethodCallTest.class));

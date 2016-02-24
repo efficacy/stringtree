@@ -1,4 +1,4 @@
-package org.stringtree.util.testing;
+package tests;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;

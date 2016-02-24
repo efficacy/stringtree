@@ -13,8 +13,6 @@ public class FetcherTests extends TestCase {
         TestSuite ret = new TestSuite();
 
         //ret.addTest(new TestSuite(TractFetcherTest.class));
-        ret.addTest(new TestSuite(BytesURLFetcherTest.class));
-        ret.addTest(new TestSuite(BytesDirectoryRepositoryTest.class));
         ret.addTest(new TestSuite(PeelbackTest.class));
         ret.addTest(new TestSuite(FetcherTest.class));
         ret.addTest(new TestSuite(BeanFetcherTest.class));

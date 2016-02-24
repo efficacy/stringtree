@@ -41,7 +41,7 @@ public class StringFilterTest extends JuicerStringTestCase {
 		filter = new PassStringFilter();
 		filter.connectSource(source);
 
-		check("Pass, whole file", "line 1\r\nline 2\r\nthird and final line", filter.nextString());
+		check("Pass, whole file", "line 1\nline 2\nthird and final line", filter.nextString());
 	}
 
 	public void testStripAndAddCR() {
@@ -107,7 +107,7 @@ public class StringFilterTest extends JuicerStringTestCase {
 		filter = new AddPrefixSuffixStringFilter("[", "]");
 		filter.connectSource(source);
 
-		check("PrefixSuffix, whole file", "[line 1\r\nline 2\r\nthird and final line]", filter.nextString());
+		check("PrefixSuffix, whole file", "[line 1\nline 2\nthird and final line]", filter.nextString());
 
 		rewind();
 		StringFilter split = new SplitLinesStringFilter();
@@ -135,7 +135,7 @@ public class StringFilterTest extends JuicerStringTestCase {
 		filter.setList(list);
 		filter.connectSource(source);
 
-		check("Pass, whole file", "line 1\r\nline 2\r\nthird and final line", filter.nextString());
+		check("Pass, whole file", "line 1\nline 2\nthird and final line", filter.nextString());
 
 		rewind();
 		list.add(new SplitLinesStringFilter());

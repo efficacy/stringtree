@@ -48,7 +48,7 @@ public class TractFilterTest extends TestCase {
 		filter = new PassTractFilter();
 		filter.connectSource(source);
 
-		assertEquals("Pass, whole file", "line 1\r\nline 2\r\nthird and @final@ line", JuicerConvertHelper.nextString(filter));
+		assertEquals("Pass, whole file", "line 1\nline 2\nthird and @final@ line", JuicerConvertHelper.nextString(filter));
 	}
 
 	public void testStringNarrow() {
@@ -74,7 +74,7 @@ public class TractFilterTest extends TestCase {
 		filter.connectSource(source);
 
 		t = filter.nextTract();
-		assertEquals("TokenFinder before", "line 1\r\nline 2\r\nthird and ", t.getContent());
+		assertEquals("TokenFinder before", "line 1\nline 2\nthird and ", t.getContent());
 		assertFalse("TokenFinder before token?", TokenHelper.isToken(t));
 
 		t = filter.nextTract();
@@ -132,14 +132,14 @@ public class TractFilterTest extends TestCase {
 		filter.setList(list);
 		filter.connectSource(source);
 
-		assertEquals("Pipeline Pass, whole file", "line 1\r\nline 2\r\nthird and @final@ line", JuicerConvertHelper.nextString(filter));
+		assertEquals("Pipeline Pass, whole file", "line 1\nline 2\nthird and @final@ line", JuicerConvertHelper.nextString(filter));
 
 		((Rewindable)source).rewind();
 		list.add(new TokenFinderTractFilter());
 		filter.relink();
 
 		t = filter.nextTract();
-		assertEquals("Pipeline TokenFinder before", "line 1\r\nline 2\r\nthird and ", t.getContent());
+		assertEquals("Pipeline TokenFinder before", "line 1\nline 2\nthird and ", t.getContent());
 		assertFalse("Pipeline TokenFinder before token?", TokenHelper.isToken(t));
 
 		t = filter.nextTract();
@@ -163,7 +163,7 @@ public class TractFilterTest extends TestCase {
 		context.put("line 1", "more stuff");
 		filter.connectSource(source);
 
-		assertEquals("split tract lines, 1", "line 1\r\nline 2\r\nthird and ", JuicerConvertHelper.nextString(filter));
+		assertEquals("split tract lines, 1", "line 1\nline 2\nthird and ", JuicerConvertHelper.nextString(filter));
 		assertEquals("split tract lines, 2", "the utter, utter, end", JuicerConvertHelper.nextString(filter));
 		assertEquals("split tract lines, 3", " line", JuicerConvertHelper.nextString(filter));
 		assertEquals("split tract lines, 4", null, JuicerConvertHelper.nextString(filter));
@@ -180,7 +180,7 @@ public class TractFilterTest extends TestCase {
 		context.put("line 1", "more stuff");
 		filter.connectSource(source);
 
-		assertEquals("external pipeline, 1", "line one\r\nblob\r\nthird and @final@ line", JuicerConvertHelper.nextString(filter));
+		assertEquals("external pipeline, 1", "line one\nblob\nthird and @final@ line", JuicerConvertHelper.nextString(filter));
 		assertEquals("external pipeline, 2", null, JuicerConvertHelper.nextString(filter));
 	}
 	
@@ -195,7 +195,7 @@ public class TractFilterTest extends TestCase {
 		context.put("line 1", "more stuff");
 		filter.connectSource(source);
 
-		assertEquals("external include, 1", "line one\r\nblob\r\nthird and @final@ line", JuicerConvertHelper.nextString(filter));
+		assertEquals("external include, 1", "line one\nblob\nthird and @final@ line", JuicerConvertHelper.nextString(filter));
 		assertEquals("external include, 2", null, JuicerConvertHelper.nextString(filter));
 	}
 	
@@ -206,7 +206,7 @@ public class TractFilterTest extends TestCase {
 
 		filter.connectSource(source);
 
-		assertEquals("external include, 1", "line one\r\nline two\r\nthird and @final@ line", JuicerConvertHelper.nextString(filter));
+		assertEquals("external include, 1", "line one\nline two\nthird and @final@ line", JuicerConvertHelper.nextString(filter));
 	}
 	
 	public void testNonSplittingReplace2() {
@@ -216,6 +216,6 @@ public class TractFilterTest extends TestCase {
 
 		filter.connectSource(source);
 
-		assertEquals("external include, 1", "line one\r\nline two\r\nthird and @final@ line", JuicerConvertHelper.nextString(filter));
+		assertEquals("external include, 1", "line one\nline two\nthird and @final@ line", JuicerConvertHelper.nextString(filter));
 	}
 }

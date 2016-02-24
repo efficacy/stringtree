@@ -33,12 +33,10 @@ public class RepositoryTest extends FetcherTestCase {
         m.put("xx", "yy");
 
         Fetcher r = new FallbackFetcher(new MapFetcher(), f);
-        assertContains("Fallback passes through contains 1", true, r, "xx");
-        assertContains("Fallback passes through contains 2", false, r, "ugh");
-        assertEquals("Fallback passes through getObject 1", "yy", r
-                .getObject("xx"));
-        assertEquals("Fallback passes through getObject 2", null, r
-                .getObject("ugh"));
+        assertContains("Fallback passes through should contain xx", true, r, "xx");
+        assertContains("Fallback passes through should not contain ugh", false, r, "ugh");
+        assertEquals("Fallback passes through getObject 1", "yy", r.getObject("xx"));
+        assertEquals("Fallback passes through getObject 2", null, r.getObject("ugh"));
 
         doTest(r, "Fallback");
     }

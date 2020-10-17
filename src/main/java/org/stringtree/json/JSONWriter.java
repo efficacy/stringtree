@@ -20,11 +20,11 @@ public class JSONWriter {
     protected StringBuffer buf = new StringBuffer();
     protected Stack<Object> calls = new Stack<Object>();
     protected boolean emitClassName = true;
-    
+
     public JSONWriter(boolean emitClassName) {
         this.emitClassName = emitClassName;
     }
-    
+
     public JSONWriter() {
         this(true);
     }
@@ -46,7 +46,7 @@ public class JSONWriter {
     public String write(char c) {
         return "\"" + c + "\"";
     }
-    
+
     public String write(boolean b) {
         return String.valueOf(b);
     }
@@ -79,7 +79,7 @@ public class JSONWriter {
         }
         return false;
     }
-    
+
     protected void bean(Object object) {
         add("{");
         BeanInfo info;
@@ -92,7 +92,7 @@ public class JSONWriter {
                 String name = prop.getName();
                 Method accessor = prop.getReadMethod();
                 if ((emitClassName==true || !"class".equals(name)) && accessor != null) {
-                    if (!accessor.isAccessible()) accessor.setAccessible(true);
+                    if (!accessor.canAccess(object)) accessor.setAccessible(true);
                     Object value = accessor.invoke(object, (Object[])null);
                     if (addedSomething) add(',');
                     add(name, value);
@@ -113,7 +113,7 @@ public class JSONWriter {
             ite.printStackTrace();
         } catch (IntrospectionException ie) {
             ie.printStackTrace();
-        } 
+        }
         add("}");
     }
 
@@ -128,7 +128,7 @@ public class JSONWriter {
         add("{");
         Iterator<Map.Entry<String,Object>> it = map.entrySet().iterator();
         while (it.hasNext()) {
-            Map.Entry<?,?> e = (Map.Entry<?,?>) it.next();
+            Map.Entry<?,?> e = it.next();
             value(e.getKey());
             add(":");
             value(e.getValue());
@@ -136,7 +136,7 @@ public class JSONWriter {
         }
         add("}");
     }
-    
+
     protected void array(Iterator<?> it) {
         add("[");
         while (it.hasNext()) {

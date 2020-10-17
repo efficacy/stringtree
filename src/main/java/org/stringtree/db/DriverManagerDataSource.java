@@ -4,13 +4,16 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.SQLFeatureNotSupportedException;
+import java.util.logging.Logger;
 
 import javax.sql.DataSource;
 
 import org.stringtree.util.iterator.Spliterator;
 
 /**
- * Data Source which uses the "old" DriverManager method of creating a connection
+ * Data Source which uses the "old" DriverManager method of creating a
+ * connection
  */
 public class DriverManagerDataSource implements DataSource {
 	private String classname;
@@ -18,7 +21,8 @@ public class DriverManagerDataSource implements DataSource {
 	private String user;
 	private String password;
 
-	public DriverManagerDataSource(String classname, String url, String user, String password) {
+	public DriverManagerDataSource(String classname, String url, String user,
+			String password) {
 		init(classname, url, user, password);
 	}
 
@@ -27,9 +31,9 @@ public class DriverManagerDataSource implements DataSource {
 	}
 
 	public DriverManagerDataSource(String spec) {
-        spec = spec.trim();
-        Spliterator it = new Spliterator(spec," ");
-        init(nextString(it), nextString(it), nextString(it), nextString(it));
+		spec = spec.trim();
+		Spliterator it = new Spliterator(spec, " ");
+		init(nextString(it), nextString(it), nextString(it), nextString(it));
 	}
 
 	private String nextString(Spliterator it) {
@@ -40,13 +44,14 @@ public class DriverManagerDataSource implements DataSource {
 		this(classname, url, null, null);
 	}
 
-	private void init(String classname, String url, String user, String password) {
+	private void init(String classname, String url, String user,
+			String password) {
 		this.classname = classname;
 		this.url = url;
 		this.user = user;
 		this.password = password;
 	}
-	
+
 	private void ensureClass() throws SQLException {
 		try {
 			Class.forName(classname);
@@ -56,43 +61,49 @@ public class DriverManagerDataSource implements DataSource {
 		}
 	}
 
-	public Connection getConnection() throws SQLException {
+	@Override public Connection getConnection() throws SQLException {
 		ensureClass();
 
-		return user == null 
-			? DriverManager.getConnection(url) 
-			: DriverManager.getConnection(url, user, password);
+		return user == null ? DriverManager.getConnection(url)
+				: DriverManager.getConnection(url, user, password);
 	}
 
-	public Connection getConnection(String user, String password) throws SQLException {
+	@Override public Connection getConnection(String user, String password)
+			throws SQLException {
 		ensureClass();
 
 		return DriverManager.getConnection(url, user, password);
 	}
 
-	public PrintWriter getLogWriter() throws SQLException {
+	@Override public PrintWriter getLogWriter() throws SQLException {
 		return DriverManager.getLogWriter();
 	}
 
-	public void setLogWriter(PrintWriter log) throws SQLException {
+	@Override public void setLogWriter(PrintWriter log) throws SQLException {
 		DriverManager.setLogWriter(log);
 	}
 
-	public void setLoginTimeout(int timeout) throws SQLException {
+	@Override public void setLoginTimeout(int timeout) throws SQLException {
 		DriverManager.setLoginTimeout(timeout);
 	}
 
-	public int getLoginTimeout() throws SQLException {
+	@Override public int getLoginTimeout() throws SQLException {
 		return DriverManager.getLoginTimeout();
 	}
-	
-	@SuppressWarnings("rawtypes")
-	public boolean isWrapperFor(Class clz) {
-        return false;
-    }
 
-	@SuppressWarnings({ "rawtypes", "unchecked" })
-    public Object unwrap(Class clz) throws SQLException {
-        throw new SQLException("Not a Wrapper for " + clz);
-    }
+	@Override @SuppressWarnings("rawtypes")
+	public boolean isWrapperFor(
+			Class clz) {
+		return false;
+	}
+
+	@Override @SuppressWarnings({ "rawtypes", "unchecked" })
+	public Object unwrap(Class clz) throws SQLException {
+		throw new SQLException("Not a Wrapper for " + clz);
+	}
+
+	@Override public Logger getParentLogger()
+			throws SQLFeatureNotSupportedException {
+		throw new SQLFeatureNotSupportedException();
+	}
 }

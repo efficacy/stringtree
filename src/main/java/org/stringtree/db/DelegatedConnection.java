@@ -17,6 +17,7 @@ import java.sql.Statement;
 import java.sql.Struct;
 import java.util.Map;
 import java.util.Properties;
+import java.util.concurrent.Executor;
 
 import org.stringtree.util.Delegator;
 
@@ -25,7 +26,7 @@ public class DelegatedConnection extends Delegator implements Connection {
 	public DelegatedConnection(Connection other) {
 		super(other);
 	}
-	
+
 	protected Connection realConnection() {
 		return (Connection)other;
 	}
@@ -273,5 +274,26 @@ public class DelegatedConnection extends Delegator implements Connection {
 	@Override
 	public <T> T unwrap(Class<T> iface) throws SQLException {
 		return realConnection().unwrap(iface);
+	}
+
+	@Override public void setSchema(String schema) throws SQLException {
+		realConnection().setSchema(schema);
+	}
+
+	@Override public String getSchema() throws SQLException {
+		return realConnection().getSchema();
+	}
+
+	@Override public void abort(Executor executor) throws SQLException {
+		realConnection().abort(executor);
+	}
+
+	@Override public void setNetworkTimeout(Executor executor, int milliseconds)
+			throws SQLException {
+		realConnection().setNetworkTimeout(executor, milliseconds);
+	}
+
+	@Override public int getNetworkTimeout() throws SQLException {
+		return realConnection().getNetworkTimeout();
 	}
 }

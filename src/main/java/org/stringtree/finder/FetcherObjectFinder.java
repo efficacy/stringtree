@@ -5,7 +5,6 @@ import java.util.Iterator;
 import org.stringtree.Fetcher;
 import org.stringtree.fetcher.ContainerHelper;
 import org.stringtree.fetcher.ListableHelper;
-import org.stringtree.finder.ObjectFinder;
 
 public class FetcherObjectFinder implements ObjectFinder {
 
@@ -15,7 +14,7 @@ public class FetcherObjectFinder implements ObjectFinder {
         this.fetcher = fetcher;
     }
 
-    public Object getObject(String name) {
+    @Override public Object getObject(String name) {
         return fetcher.getObject(name);
     }
 
@@ -23,11 +22,11 @@ public class FetcherObjectFinder implements ObjectFinder {
         return ListableHelper.list(fetcher);
     }
 
-    public boolean contains(String name) {
+    @Override public boolean contains(String name) {
         return ContainerHelper.contains(fetcher, name);
     }
 
-    public Fetcher getUnderlyingFetcher() {
+    @Override public Fetcher getUnderlyingFetcher() {
         return fetcher;
     }
 }

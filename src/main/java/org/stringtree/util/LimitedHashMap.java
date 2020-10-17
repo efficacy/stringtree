@@ -4,12 +4,10 @@ import java.util.ArrayDeque;
 import java.util.HashMap;
 import java.util.Queue;
 
-@SuppressWarnings("serial")
 public class LimitedHashMap<T1, T2> extends HashMap<T1, T2> {
-	
 	protected Queue<T1> queue;
 	protected int limit;
-	
+
 	public LimitedHashMap(int limit) {
 		this.limit = limit;
 		this.queue = new ArrayDeque<T1>(limit);

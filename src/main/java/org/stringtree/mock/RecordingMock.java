@@ -4,19 +4,19 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import junit.framework.Assert;
+import org.junit.Assert;
 
 public class RecordingMock {
-    
+
     public boolean verbose = false;
     public List<MockAction> recorded = new ArrayList<MockAction>();
     public Throwable exception;
     public Object target;
-    
+
     public RecordingMock(Object target) {
         this.target = target;
     }
-    
+
     public RecordingMock() {
         this(null);
     }
@@ -25,7 +25,7 @@ public class RecordingMock {
         if (verbose) System.out.println(action);
         recorded.add(action);
     }
-    
+
     public void clear() {
         recorded.clear();
     }
@@ -45,11 +45,11 @@ public class RecordingMock {
     public void record(String message) {
         record(new MockAction(target, message));
     }
-    
+
     public void setException(Throwable throwable) {
         this.exception = throwable;
     }
-    
+
     public void assertCalled(int nTimes, String message, Object... args) {
         int count = 0;
         for (MockAction action : recorded) {
@@ -67,7 +67,7 @@ public class RecordingMock {
     public void assertNotCalled(String message, Object... args) {
         assertCalled(0, message, args);
     }
-    
+
     public void assertCalled(int nTimes, String message) {
         int count = 0;
         for (MockAction action : recorded) {

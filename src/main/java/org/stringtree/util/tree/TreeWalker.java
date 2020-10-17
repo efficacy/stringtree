@@ -18,13 +18,12 @@ public class TreeWalker<T> {
         walkAll(visitor, root);
     }
 
-    @SuppressWarnings("cast")
     protected void walkChildren(TreeVisitor<T> visitor, Tree<T> node) {
         Collection<Tree<T>> children = node.getChildren();
         if (children != null) {
             Iterator<Tree<T>> it = children.iterator();
             while (it.hasNext()) {
-                Tree<T> child = (Tree<T>) it.next();
+                Tree<T> child = it.next();
                 walkAll(visitor, child);
             }
         }

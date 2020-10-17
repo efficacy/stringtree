@@ -23,12 +23,12 @@ class ListingVisitor<T> extends ArrayList<Object> implements TreeVisitor<T> {
         return (Tree<T>) get(n);
     }
 
-    public void enter(Tree<T> node) {
+    @Override public void enter(Tree<T> node) {
         add("enter: " + node.getValue());
         visit(node);
     }
 
-    public void exit(Tree<T> node) {
+    @Override public void exit(Tree<T> node) {
         add("exit");
     }
 }
@@ -36,7 +36,7 @@ class ListingVisitor<T> extends ArrayList<Object> implements TreeVisitor<T> {
 class SimpleVisitor<T> extends SimpleTreeVisitor<T> {
     List<String> list = new ArrayList<String>();
 
-    public void visit(Tree<T> node) {
+    @Override public void visit(Tree<T> node) {
         list.add("visit: " + node.getValue());
     }
 
@@ -50,13 +50,13 @@ class SimpleVisitor<T> extends SimpleTreeVisitor<T> {
 }
 
 public class TreeWalkerTest extends TestCase {
-    
+
     MutableTree<String> t;
     TreeWalker<String> tw;
     ListingVisitor<String> visitor;
     SimpleVisitor<String> simple;
 
-    public void setUp() {
+    @Override public void setUp() {
         t = new SimpleTree<String>();
         t.setValue("root");
 
@@ -83,7 +83,6 @@ public class TreeWalkerTest extends TestCase {
         assertEquals("visit: root", simple.get(0));
     }
 
-    @SuppressWarnings({ "unchecked", "cast" })
     public void testNodeWithChild() {
         Tree<String> c1 = new SimpleTree<String>(t, TreeTest.empty, "c1");
         t.addChild(c1);
@@ -108,7 +107,6 @@ public class TreeWalkerTest extends TestCase {
         assertEquals("visit: c1", simple.get(1));
     }
 
-    @SuppressWarnings({ "unchecked", "cast" })
     public void testNodeWithChildren() {
         Tree<String> c1 = new SimpleTree<String>(t, TreeTest.empty, "c1");
         Tree<String> c2 = new SimpleTree<String>(t, TreeTest.empty, "c2");

@@ -16,15 +16,15 @@ public class JSONPrettyWriter extends JSONWriter {
 	private static int stepsize = 3;
 	private static int max = spaces.length() / stepsize;
     private int level = 0;
-    
+
     public JSONPrettyWriter(boolean emitClassName) {
     	super(emitClassName);
     }
-    
+
     public JSONPrettyWriter() {
     	super(false);
     }
-    
+
     private void indent() {
     	if (0 == level) return;
     	if (level < max) {
@@ -38,7 +38,7 @@ public class JSONPrettyWriter extends JSONWriter {
 	    	}
     	}
     }
-    
+
     private void nl() {
     	add("\r\n");
     	indent();
@@ -53,11 +53,11 @@ public class JSONPrettyWriter extends JSONWriter {
         --level;
 		nl();
 	}
-	
-    protected void bean(Object object) {
+
+    @Override protected void bean(Object object) {
         add("{");
         stepIn();
-        
+
         BeanInfo info;
         boolean addedSomething = false;
         try {
@@ -68,7 +68,7 @@ public class JSONPrettyWriter extends JSONWriter {
                 String name = prop.getName();
                 Method accessor = prop.getReadMethod();
                 if ((emitClassName==true || !"class".equals(name)) && accessor != null) {
-                    if (!accessor.isAccessible()) accessor.setAccessible(true);
+                    if (!accessor.canAccess(object)) accessor.setAccessible(true);
                     Object value = accessor.invoke(object, (Object[])null);
                     if (addedSomething) {
                     	add(',');
@@ -93,18 +93,18 @@ public class JSONPrettyWriter extends JSONWriter {
         } catch (IntrospectionException ie) {
             ie.printStackTrace();
         }
-        
+
         stepOut();
         add("}");
     }
 
-    protected void map(Map<String,Object> map) {
+    @Override protected void map(Map<String,Object> map) {
         add("{");
         stepIn();
-        
+
         Iterator<Map.Entry<String,Object>> it = map.entrySet().iterator();
         while (it.hasNext()) {
-            Map.Entry<?,?> e = (Map.Entry<?,?>) it.next();
+            Map.Entry<?,?> e = it.next();
             value(e.getKey());
             add(":");
             value(e.getValue());
@@ -113,15 +113,15 @@ public class JSONPrettyWriter extends JSONWriter {
             	nl();
             }
         }
-        
+
         stepOut();
         add("}");
     }
-    
-    protected void array(Iterator<?> it) {
+
+    @Override protected void array(Iterator<?> it) {
         add("[");
         stepIn();
-        
+
         while (it.hasNext()) {
             value(it.next());
             if (it.hasNext()) {
@@ -129,15 +129,15 @@ public class JSONPrettyWriter extends JSONWriter {
             	nl();
             }
         }
-        
+
         stepOut();
         add("]");
     }
 
-    protected void array(Object object) {
+    @Override protected void array(Object object) {
         add("[");
         stepIn();
-        
+
         int length = Array.getLength(object);
         for (int i = 0; i < length; ++i) {
             value(Array.get(object, i));
@@ -146,7 +146,7 @@ public class JSONPrettyWriter extends JSONWriter {
             	nl();
             }
         }
-        
+
         stepOut();
         add("]");
     }

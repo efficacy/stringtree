@@ -14,7 +14,7 @@ import org.stringtree.util.tree.Trees;
 
 public class TreeTest extends TestCase {
     public static final Collection<Tree<String>> empty = Collections.emptyList();
-    
+
     public void testEmptyTree() {
         Tree<Object> t = new EmptyTree<Object>();
         assertEquals(null, t.getParent());
@@ -60,7 +60,6 @@ public class TreeTest extends TestCase {
         assertEquals(new SimpleTree<String>(parent, empty, null), t);
     }
 
-    @SuppressWarnings({ "unchecked", "cast" })
     public void testNodeWithChild() {
         MutableTree<String> t = new SimpleTree<String>();
         Tree<String> c1 = new SimpleTree<String>(t, empty, "c1");
@@ -76,7 +75,6 @@ public class TreeTest extends TestCase {
         assertEquals(t2, t);
     }
 
-    @SuppressWarnings({ "unchecked", "cast" })
     public void testNodeWithChildren() {
         MutableTree<String> t = new SimpleTree<String>();
         Tree<String> c1 = new SimpleTree<String>(t, empty, "c1");

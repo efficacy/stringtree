@@ -27,7 +27,7 @@ import org.stringtree.util.sort.Sorter2;
 import junit.framework.TestCase;
 
 public class DirectTemplateTest extends TestCase {
-    
+
     private static final String NL = System.getProperty("line.separator");
     Templater templater;
     Map<String, Object> tplstore;
@@ -36,7 +36,7 @@ public class DirectTemplateTest extends TestCase {
     StringCollector collector;
     StringFinder finder;
 
-    public void setUp() {
+    @Override public void setUp() {
         tplstore = new HashMap<String, Object>();
         context = new MapFetcher();
         finder = new FetcherStringFinder(context);
@@ -85,11 +85,11 @@ public class DirectTemplateTest extends TestCase {
         assertEquals("", TemplaterHelper.expand(templater, finder, "tpl1"));
         tplstore.put("tpl1", new MapTract("hello"));
         assertEquals("hello", TemplaterHelper.expand(templater, finder, "tpl1"));
-        
+
         Tract tract = new MapTract("hello '${name}'");
         tplstore.put("tpl1", tract);
         assertEquals("hello ''", TemplaterHelper.expand(templater, finder, "tpl1"));
-        
+
         context.put("name", "Frank");
         assertEquals("hello 'Frank'", TemplaterHelper.expand(templater, finder, "tpl1"));
     }
@@ -108,7 +108,7 @@ public class DirectTemplateTest extends TestCase {
         assertEquals("hello 'Margaret'", TemplaterHelper.expand(templater, finder, "tpl2"));
         assertEquals("hello 'Frank'", TemplaterHelper.expand(templater, finder, "tpl1"));
     }
-    
+
     public void testSingleLetterNames() {
         tplstore.put("tpl3", "y='${y}'");
         assertEquals("y=''", TemplaterHelper.expand(templater, finder, "tpl3"));
@@ -182,12 +182,12 @@ public class DirectTemplateTest extends TestCase {
         tplstore.put("tpl1", "${name*tpl2}");
         tplstore.put("tpl2", "hello '${this}' ");
         context.put("name", new Object[] { "Frank", "Margaret" });
-        assertEquals("hello 'Frank' hello 'Margaret' ", 
+        assertEquals("hello 'Frank' hello 'Margaret' ",
         		TemplaterHelper.expand(templater, finder, "tpl1"));
 
         tplstore.put("tpl3", "${  name  *  tpl4  }");
         tplstore.put("tpl4", "hello '${  this  }' ");
-        assertEquals("hello 'Frank' hello 'Margaret' ", 
+        assertEquals("hello 'Frank' hello 'Margaret' ",
         		TemplaterHelper.expand(templater, finder, "tpl3"));
     }
 
@@ -196,17 +196,17 @@ public class DirectTemplateTest extends TestCase {
         tplstore.put("tpl1", "${name*tpl2/', '}");
         tplstore.put("tpl2", "hello '${this}'");
         context.put("name", new Object[] { "Frank", "Margaret" });
-        assertEquals("hello 'Frank', hello 'Margaret'", 
+        assertEquals("hello 'Frank', hello 'Margaret'",
         		TemplaterHelper.expand(templater, finder, "tpl1"));
 
         tplstore.put("tpl3", "${  name  *  tpl4  /  ', '}");
         tplstore.put("tpl4", "hello '${  this  }'");
-        assertEquals("hello 'Frank', hello 'Margaret'", 
+        assertEquals("hello 'Frank', hello 'Margaret'",
         		TemplaterHelper.expand(templater, finder, "tpl3"));
 
         tplstore.put("tpl3", "${  name  *  tpl4  /  }");
         tplstore.put("tpl4", "hello '${  this  }'");
-        assertEquals("hello 'Frank'" + NL + "hello 'Margaret'", 
+        assertEquals("hello 'Frank'" + NL + "hello 'Margaret'",
         		TemplaterHelper.expand(templater, finder, "tpl3"));
     }
 
@@ -237,7 +237,7 @@ public class DirectTemplateTest extends TestCase {
         tplstore.put("tpl4", "hello ${  name  ? * tpl5 : * tpl3 }");
         tplstore.put("tpl5", "${this}, Dude!");
         assertEquals("hello Huh, Dude!", TemplaterHelper.expand(templater, finder, "tpl4"));
-        
+
         context.put("name", Boolean.FALSE);
         assertEquals("hello Nobody", TemplaterHelper.expand(templater, finder, "tpl1"));
     }
@@ -388,7 +388,7 @@ public class DirectTemplateTest extends TestCase {
                 templates.getObject("FacadeDriver"));
         assertEquals("\"\", \"\"", TemplaterHelper.expand(templater, finder, "FacadeDriver"));
         context.put("FACADE_DRIVER", "com.efsol.MySQLDriver");
-        assertEquals("\"com.efsol.MySQLDriver\", \"\"", 
+        assertEquals("\"com.efsol.MySQLDriver\", \"\"",
         		TemplaterHelper.expand(templater, finder, "FacadeDriver"));
         context.put("FACADE_URL", "http://localhost:1234/");
         assertEquals("\"com.efsol.MySQLDriver\", \"http://localhost:1234/\"",
@@ -516,14 +516,14 @@ public class DirectTemplateTest extends TestCase {
     }
 
     public void testNonStringPassthrough() {
-        context.put("text", new Integer("123"));
+        context.put("text", Integer.valueOf("123"));
         context.put("converter", new Example());
         tplstore.put("tpl1", "${text|converter.underline}");
         assertEquals("_123_", TemplaterHelper.expand(templater, finder, "tpl1"));
         tplstore.put("tpl2", "${text|converter.bold}");
         assertEquals("*123*", TemplaterHelper.expand(templater, finder, "tpl2"));
     }
-    
+
     public void testDomainObjectBooleanPassThrough() {
         context.put("thing", new FullName("Frank", "Carver"));
         context.put("name.checker", new NameChecker());
@@ -531,21 +531,21 @@ public class DirectTemplateTest extends TestCase {
         tplstore.put("tpl2", "${this|name.checker.isDeveloper?'yup':'nope'}");
         assertEquals("yup", TemplaterHelper.expand(templater, finder, "tpl1"));
     }
-    
+
     public void testDateFormat() {
         context.put("date", new Date(1130838311844L));
         context.put("df", new SimpleDateFormat("yyyy-MM-dd"));
         tplstore.put("tpl1", "${date|df.format}");
         assertEquals("2005-11-01", TemplaterHelper.expand(templater, finder, "tpl1"));
     }
-    
+
     public void testLiteralAssignment() {
         assertEquals(null, context.getObject("ugh"));
         tplstore.put("tpl1", "x${ugh='hello'}y");
         assertEquals("xy", TemplaterHelper.expand(templater, finder, "tpl1"));
         assertEquals("hello", context.getObject("ugh"));
     }
-    
+
     public void testParentAssignmentInTract() {
         Tract t1 = new MapTract("x${^ugh='hello'}y");
         t1.put(Templater.PARENT, context);
@@ -555,7 +555,7 @@ public class DirectTemplateTest extends TestCase {
         assertEquals(null, t1.getObject("ugh"));
         assertEquals("hello", context.getObject("ugh"));
     }
-    
+
     public void testParentParentAssignmentInTract() {
         Fetcher parent = new MapFetcher();
         context.put(Templater.PARENT, parent);
@@ -568,7 +568,7 @@ public class DirectTemplateTest extends TestCase {
         assertEquals(null, context.getObject("ugh"));
         assertEquals("hello", parent.getObject("ugh"));
     }
-    
+
     public void testBaseAssignmentInTract() {
         Fetcher base = new MapFetcher();
         context.put(Templater.BASE, base);
@@ -581,7 +581,7 @@ public class DirectTemplateTest extends TestCase {
         assertEquals(null, context.getObject("ugh"));
         assertEquals("hello", base.getObject("ugh"));
     }
-    
+
     public void testVariableAssignmentString() {
         assertEquals(null, context.getObject("ugh"));
         context.put("colour", "blue");
@@ -589,7 +589,7 @@ public class DirectTemplateTest extends TestCase {
         assertEquals("xy blue", TemplaterHelper.expand(templater, finder, "tpl1"));
         assertEquals("blue", context.getObject("ugh"));
     }
-    
+
     public void testVariableAssignmentObject() {
         assertEquals(null, context.getObject("ugh"));
         FullName name = new FullName("Frank", "Carver");
@@ -607,13 +607,13 @@ public class DirectTemplateTest extends TestCase {
         assertEquals("xy Frank", TemplaterHelper.expand(templater, finder, "tpl1"));
         assertEquals(name, context.getObject("ugh"));
     }
-    
+
     public void testMap() {
         Map<String, String> map = new HashMap<String, String>();
         map.put("hello", "world");
         //map.put("goodbye", "life");
         context.put("map", map);
-        
+
         tplstore.put("map", "<map>${map*entry}</map>");
         tplstore.put("entry", "<entry>${this.key}=${this.value}</entry>");
         String ret = TemplaterHelper.expand(templater, finder, "map");
@@ -622,84 +622,84 @@ public class DirectTemplateTest extends TestCase {
 
     public void testSimpleExpandWithXMLEscape() {
         templater.setStringConverter(new XMLEscaper());
-        
+
         tplstore.put("tpl1", "hello '${name}'");
         assertEquals("hello ''", TemplaterHelper.expand(templater, finder, "tpl1"));
         context.put("name", "Frank & Margaret");
-        assertEquals("hello 'Frank &amp; Margaret'", 
+        assertEquals("hello 'Frank &amp; Margaret'",
                 TemplaterHelper.expand(templater, finder, "tpl1"));
 
         context.put("name", "Frank > Margaret");
-        assertEquals("hello 'Frank &gt; Margaret'", 
+        assertEquals("hello 'Frank &gt; Margaret'",
                 TemplaterHelper.expand(templater, finder, "tpl1"));
 
         context.put("name", "Frank < Margaret");
-        assertEquals("hello 'Frank &lt; Margaret'", 
+        assertEquals("hello 'Frank &lt; Margaret'",
                 TemplaterHelper.expand(templater, finder, "tpl1"));
 
         context.put("name", "Frank \" Margaret");
-        assertEquals("hello 'Frank &quot; Margaret'", 
+        assertEquals("hello 'Frank &quot; Margaret'",
                 TemplaterHelper.expand(templater, finder, "tpl1"));
 
         context.put("name", "Frank ' Margaret");
-        assertEquals("hello 'Frank &apos; Margaret'", 
+        assertEquals("hello 'Frank &apos; Margaret'",
                 TemplaterHelper.expand(templater, finder, "tpl1"));
     }
-    
+
     public void testPipeBeforeMultiply() {
         context.put("sorter", new Sorter2<String>());
-        
-        List<String> list = new ArrayList<String>(); 
+
+        List<String> list = new ArrayList<String>();
         list.add("a");
         list.add("c");
         list.add("b");
         context.put("list", list);
-        
+
         tplstore.put("tpl1", "${list|sorter.sort*/','}");
         assertEquals("a,b,c", TemplaterHelper.expand(templater, finder, "tpl1"));
      }
-    
+
     public void testIndirectTemplate() {
         tplstore.put("tpl1", "x${@name}");
         tplstore.put("frank", "hello!");
         tplstore.put("nobody", "goodbye!");
 
         assertEquals("x", TemplaterHelper.expand(templater, finder, "tpl1"));
-        
+
         context.put("name", "frank");
         assertEquals("xhello!", TemplaterHelper.expand(templater, finder, "tpl1"));
-        
+
         context.put("name", "nobody");
         assertEquals("xgoodbye!", TemplaterHelper.expand(templater, finder, "tpl1"));
-        
+
     }
-    
+
     public void testTemplateAsValue() {
         tplstore.put("tpl1", "x${~tpl2}");
         tplstore.put("tpl2", "<a>");
 
         assertEquals("x<a>", TemplaterHelper.expand(templater, finder, "tpl1"));
     }
-    
+
     public void testIndirectValue() {
         tplstore.put("tpl1", "${name} = ${^name}");
 
         assertEquals(" = ", TemplaterHelper.expand(templater, finder, "tpl1"));
-        
+
         context.put("name", "frank");
         assertEquals("frank = ", TemplaterHelper.expand(templater, finder, "tpl1"));
-        
+
         context.put("frank", "cool");
         assertEquals("frank = cool", TemplaterHelper.expand(templater, finder, "tpl1"));
-        
+
     }
-    
+
     public void testAssignmentPropagation() {
         tplstore.put("tpl1", "${a='hello'}${'ugh'*tpl2}");
         tplstore.put("tpl2", "${this} said '${a}'");
         assertEquals("ugh said 'hello'", TemplaterHelper.expand(templater, finder, "tpl1"));
     }
-    
+
     public void testXMLElementExpansion() {
         tplstore.put("element", "<${this.name}>${this.value}</${this.name}>");
         Map<String, String> map = new HashMap<String, String>();
@@ -708,7 +708,7 @@ public class DirectTemplateTest extends TestCase {
         context.put("this", map );
         assertEquals("<forename>Frank</forename>", TemplaterHelper.expand(templater, finder, "element"));
     }
-    
+
     public void testXMLElementToolExpansion() {
         context.put("this", new FullName("Frank", "Carver"));
         context.put("beantool", new BeanTool());
@@ -716,7 +716,7 @@ public class DirectTemplateTest extends TestCase {
         tplstore.put("element", "<${name}>${value}</${name}>");
         assertEquals("<forename>Frank</forename>", TemplaterHelper.expand(templater, finder, "tpl1"));
     }
-        
+
     public void testXMLElementExpansionSequence() {
         context.put("frank", new FullName("Frank", "Carver"));
         context.put("field", new BeanTool());

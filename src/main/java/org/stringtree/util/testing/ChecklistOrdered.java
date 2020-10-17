@@ -17,7 +17,7 @@ public class ChecklistOrdered<T> {
     private ChecklistOrdered(int size) {
         this.items = (T[]) new Object[size];
     }
-    
+
     public ChecklistOrdered(Collection<T> collection, int verbose) {
         this(collection.size());
         int i = 0;
@@ -26,11 +26,12 @@ public class ChecklistOrdered<T> {
         }
         this.verbose = verbose;
     }
-    
+
     public ChecklistOrdered(Collection<T> collection) {
         this(collection, Checklist.NORMAL);
     }
 
+    @SafeVarargs
     public ChecklistOrdered(int verbose, T... array) {
         this(array.length);
         int i = 0;
@@ -39,7 +40,8 @@ public class ChecklistOrdered<T> {
         }
         this.verbose = verbose;
     }
-    
+
+    @SafeVarargs
     public ChecklistOrdered(T... array) {
         this(Checklist.NORMAL, array);
     }
@@ -61,21 +63,21 @@ public class ChecklistOrdered<T> {
                 }
                 return false;
             }
-            
+
             T value = it.next();
             if (!compare(index, value)) {
                 return false;
             }
             ++index;
         }
-        
+
         if (index < items.length) {
             if (verbose > Checklist.SILENT) {
                 System.out.println("Checklist Failure too few items, expected " + items.length);
             }
             return false;
         }
-        
+
         return true;
     }
 

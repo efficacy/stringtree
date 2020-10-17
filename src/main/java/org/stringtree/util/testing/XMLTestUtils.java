@@ -14,13 +14,13 @@ import javax.xml.xpath.XPathFactory;
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 
-import junit.framework.Assert;
+import org.junit.Assert;
 
 public class XMLTestUtils {
-    
-	private static DocumentBuilder db = null; 
+
+	private static DocumentBuilder db = null;
 	private static XPath xp = XPathFactory.newInstance().newXPath();
-	
+
 	static synchronized DocumentBuilder db() {
 	    if (null != db) return db;
 		try {
@@ -51,11 +51,11 @@ public class XMLTestUtils {
     public static void assertAttribute(String xml, String element, String name, String value) {
     	assertXPath(xml, "//" + element + "/@" + name, value);
 	}
-	
+
     public static void assertNoElement(String xml, String element, String value) {
 		Assert.assertFalse(xml.contains("<" + element + ">" + value + "</" + element + ">"));
 	}
-    
+
     public static void assertXPath(String xml, String pattern, String value) {
 		String ret = null;
 		try {
@@ -68,13 +68,13 @@ public class XMLTestUtils {
 
     public static Document parse(String xml) {
 		Document dom = null;
-		
+
 		try {
 			dom = db.parse(new InputSource(new StringReader(xml)));
 		}catch(Exception e) {
 			Assert.fail(e.getMessage());
 		}
-		
+
 		return dom;
 	}
 }

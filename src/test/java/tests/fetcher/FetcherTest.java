@@ -24,11 +24,11 @@ import org.stringtree.fetcher.filter.SuffixFilter;
 import tests.TestBean;
 
 public class FetcherTest extends TestCase {
-    
+
     Map<String, Object> map;
     Fetcher fetcher;
 
-    public void setUp() {
+    @Override public void setUp() {
         map = new HashMap<String, Object>();
     }
 
@@ -93,11 +93,11 @@ public class FetcherTest extends TestCase {
         fetcher = new FallbackFetcher(new MapFetcher(map), new BeanFetcher(
                 new TestBean()));
         assertEquals("testFallback 1", null, fetcher.getObject("hello"));
-        assertEquals("testFallback 2", new Integer(321), fetcher.getObject("mi"));
+        assertEquals("testFallback 2", Integer.valueOf(321), fetcher.getObject("mi"));
 
         map.put("hello", "world");
         assertEquals("testFallback 3", "world", fetcher.getObject("hello"));
-        assertEquals("testFallback 4", new Integer(321), fetcher.getObject("mi"));
+        assertEquals("testFallback 4", Integer.valueOf(321), fetcher.getObject("mi"));
 
         map.put("mi", "ugh");
         assertEquals("testFallback 5", "world", fetcher.getObject("hello"));
@@ -116,7 +116,7 @@ public class FetcherTest extends TestCase {
         fetcher = new CachedFetcher(new BeanFetcher(new TestBean()));
         assertEquals("beanSF get missing property", null, fetcher.getObject("hello"));
         assertEquals("beanSF get object property", "world", fetcher.getObject("ms"));
-        assertEquals("beanSF get primitive property", new Integer(321), fetcher.getObject("mi"));
+        assertEquals("beanSF get primitive property", Integer.valueOf(321), fetcher.getObject("mi"));
     }
 
     public void testResourcePropertiesFetcher() {

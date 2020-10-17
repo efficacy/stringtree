@@ -3,14 +3,16 @@ package org.stringtree.db.stub;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.sql.SQLFeatureNotSupportedException;
+import java.util.logging.Logger;
 
 import javax.sql.DataSource;
 
 public class StubDataSource implements DataSource {
 	private PrintWriter logWriter;
-	
+
 	public StubDataSource() {
-		logWriter = new PrintWriter(System.err); 
+		logWriter = new PrintWriter(System.err);
 	}
 
 	@Override public PrintWriter getLogWriter() throws SQLException {
@@ -41,6 +43,12 @@ public class StubDataSource implements DataSource {
 	}
 
 	@Override public Connection getConnection(String username, String password) throws SQLException {
+		return null;
+	}
+
+	@Override public Logger getParentLogger()
+			throws SQLFeatureNotSupportedException {
+		// TODO Auto-generated method stub
 		return null;
 	}
 }

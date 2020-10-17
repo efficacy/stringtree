@@ -24,14 +24,13 @@ public class TreeTransformer<T,U> {
         return transformAll(visitor, from, to);
     }
 
-    @SuppressWarnings("cast")
     protected boolean transformChildren(TreeTransformVisitor<T,U> visitor, Tree<T> from, MutableTree<U> to) {
         boolean ret = false;
         Collection<Tree<T>> fromchildren = from.getChildren();
         if (fromchildren != null) {
             Iterator<Tree<T>> it = fromchildren.iterator();
             while (it.hasNext()) {
-                Tree<T> fromchild = (Tree<T>) it.next();
+                Tree<T> fromchild = it.next();
                 MutableTree<U> tochild = new SimpleTree<U>();
                 if (transformAll(visitor, fromchild, tochild)) {
                     to.addChild(tochild);

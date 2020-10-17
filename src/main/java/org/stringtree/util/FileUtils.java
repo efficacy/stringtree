@@ -10,7 +10,7 @@ import java.text.CharacterIterator;
 import java.text.StringCharacterIterator;
 
 public class FileUtils {
-    
+
     public static File ensureDirectory(File dir) {
         if (!dir.exists()) {
             if (!dir.mkdirs()) {
@@ -27,7 +27,7 @@ public class FileUtils {
     public static File ensureDirectory(File root, String name) {
         return ensureDirectory(new File(root, name));
     }
-    
+
     public static void delete(File file) {
         if (!file.delete()) {
             System.err.println("could not delete file [" + file.getAbsolutePath() + "]");
@@ -37,7 +37,7 @@ public class FileUtils {
     /**
      * extract the local path information from a URL in a form suitable for
      * contructing a File
-     * 
+     *
      * @return a string with the '/' replacd by local separators
      */
     public static String getLocalFilePath(String path) {
@@ -59,26 +59,20 @@ public class FileUtils {
 
         return ret;
     }
-    
+
     public static void copy(File source, File dest) {
         File parent = dest.getParentFile();
         if (!parent.isDirectory()) {
             FileUtils.ensureDirectory(parent);
         }
 
-        FileChannel in = null;
-        FileChannel out = null;
-        try {
-            FileInputStream fileInputStream = new FileInputStream(source);
-            FileOutputStream fileOutputStream = new FileOutputStream(dest);
-            in = fileInputStream.getChannel();
-            out = fileOutputStream.getChannel();
+        try (
+        	FileChannel in = new FileInputStream(source).getChannel();
+            FileChannel out = new FileOutputStream(dest).getChannel();
+        ){
             copy(in, out);
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            if (in != null) ChannelUtils.close(in);
-            if (out != null) ChannelUtils.close(out);
         }
     }
 

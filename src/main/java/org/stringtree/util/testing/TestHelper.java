@@ -1,11 +1,11 @@
 package org.stringtree.util.testing;
 
-import junit.framework.Assert;
+import org.junit.Assert;
 
 import org.stringtree.util.FileReadingUtils;
 
 public class TestHelper {
-    
+
 	public static void assertFileString(String filename, String contents) {
 		String desired = FileReadingUtils.readFile(filename);
 		Assert.assertEquals(desired, contents);

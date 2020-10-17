@@ -3,24 +3,26 @@ package org.stringtree.util;
 import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.io.Writer;
+import java.lang.reflect.InvocationTargetException;
 
 public class ClassUtils {
-    
+
 	@SuppressWarnings("rawtypes")
 	protected static Class loadClass(String className, ClassLoader loader)
             throws ClassNotFoundException {
         return Class.forName(className, true, loader);
     }
 
-	@SuppressWarnings("rawtypes")
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public static Object rawCreate(Class cls)
-            throws ClassNotFoundException, IllegalAccessException, InstantiationException {
-        return cls.newInstance();
+            throws ClassNotFoundException, IllegalAccessException, InstantiationException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
+        return cls.getDeclaredConstructor().newInstance();
     }
 
+    @SuppressWarnings("unchecked")
     public static Object rawCreate(String className, ClassLoader loader)
-            throws ClassNotFoundException, IllegalAccessException, InstantiationException {
-        return loadClass(className, loader).newInstance();
+            throws ClassNotFoundException, IllegalAccessException, InstantiationException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
+        return loadClass(className, loader).getDeclaredConstructor().newInstance();
     }
 
     protected static void logCreationMessage(String message, Exception e,

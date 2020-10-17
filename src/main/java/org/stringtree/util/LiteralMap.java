@@ -2,7 +2,6 @@ package org.stringtree.util;
 
 import java.util.LinkedHashMap;
 
-@SuppressWarnings("serial")
 public class LiteralMap<K,V> extends LinkedHashMap<K, V> {
 	@SuppressWarnings("unchecked")
 	public LiteralMap(Object... objects) {

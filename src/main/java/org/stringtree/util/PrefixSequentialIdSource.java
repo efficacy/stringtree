@@ -1,7 +1,5 @@
 package org.stringtree.util;
 
-import org.stringtree.util.SequentialIdSource;
-
 public class PrefixSequentialIdSource extends SequentialIdSource {
     private String prefix;
     private int width;
@@ -20,10 +18,10 @@ public class PrefixSequentialIdSource extends SequentialIdSource {
         this(prefix, 1);
     }
 
-    public synchronized String next() {
+    @Override public synchronized String next() {
         return id(super.next());
     }
-    
+
     public String id(String string) {
         return prefix + pad(string);
     }
@@ -46,7 +44,7 @@ public class PrefixSequentialIdSource extends SequentialIdSource {
         return string;
     }
 
-    public boolean valid(String id) {
+    @Override public boolean valid(String id) {
         return null != id && id.startsWith(prefix) && super.valid(id.substring(prefix.length()));
     }
 }

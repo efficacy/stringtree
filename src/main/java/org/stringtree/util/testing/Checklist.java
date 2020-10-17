@@ -11,11 +11,12 @@ public class Checklist<T> {
     public static final int SILENT = 0;
     public static final int NORMAL = 1;
     public static final int VERBOSE = 2;
-    
+
     private T[] items;
     private int[] ticks; // note: extra slot at the end to represent unknown items
     private int verbose = NORMAL;
 
+    @SafeVarargs
     public Checklist(int verbose, T... items) {
         set(items);
         setVerbose(verbose);
@@ -29,7 +30,8 @@ public class Checklist<T> {
     public Checklist(Collection<T> items) {
         set(items);
     }
-    
+
+    @SafeVarargs
     public Checklist(T... items) {
         set(items);
     }
@@ -120,7 +122,7 @@ public class Checklist<T> {
             if (ticks[i] > 1) {
                 ret = true;
                 if (verbose > SILENT) {
-                    System.out.println("Checklist Failure: '" + items[i] + 
+                    System.out.println("Checklist Failure: '" + items[i] +
                         "' checked " + ticks[i] + " times");
                 }
             }
@@ -144,12 +146,12 @@ public class Checklist<T> {
         return allCheckedAtLeastOnce() && !anyCheckedMoreThanOnce()
                 && !anyUnknownItemsChecked();
     }
-    
+
     public boolean check() {
         return allAndOnlyOnce();
     }
 
-    public String toString() {
+    @Override public String toString() {
         StringBuffer ret = new StringBuffer();
         for (int i = 0; i < items.length; ++i) {
             ret.append("'");
@@ -164,7 +166,8 @@ public class Checklist<T> {
         return ret.toString();
     }
 
-    public void consider(T... array) {
+    @SafeVarargs
+    public final void consider(T... array) {
         reset();
         for (T t : array) {
             tick(t);
@@ -177,19 +180,20 @@ public class Checklist<T> {
             tick(it.next());
         }
     }
-    
+
     public void consider(Enumeration<T> it) {
         reset();
         while (it.hasMoreElements()) {
             tick(it.nextElement());
         }
     }
-    
+
     public void consider(Collection<T> c) {
         consider(c.iterator());
     }
 
-    public boolean check(T... array) {
+    @SafeVarargs
+    public final boolean check(T... array) {
         consider(array);
         return check();
     }
@@ -218,16 +222,16 @@ public class Checklist<T> {
     @SuppressWarnings("rawtypes")
 	public static boolean compareSubset(int n, Collection expected, Collection actual) {
     	if (actual.size() != n) return false;
-    	
+
     	Set<Object> had = new HashSet<Object>(n);
-    	
+
     	Iterator it = actual.iterator();
     	while (it.hasNext()) {
     	    Object obj = it.next();
     		if (!expected.contains(obj) || had.contains(obj)) return false;
     		had.add(obj);
     	}
-    	
+
     	return true;
     }
 }

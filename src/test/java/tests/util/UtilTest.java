@@ -12,7 +12,7 @@ import org.stringtree.util.LongNumberUtils;
 import org.stringtree.util.StringUtils;
 
 public class UtilTest extends TestCase {
-    
+
     public void testStringValue() {
         assertEquals("null -> null", null, StringUtils.stringValue(null));
         assertEquals("blank -> blank", "", StringUtils.stringValue(""));
@@ -40,18 +40,16 @@ public class UtilTest extends TestCase {
         assertEquals("3 -> 3", 3, IntegerNumberUtils.intValue(Integer.valueOf(3)));
         assertEquals("3(12) -> 3", 3, IntegerNumberUtils.intValue(
                 Integer.valueOf(3), 12));
-        assertEquals("3.2 -> 3", 3, IntegerNumberUtils.intValue(new Float(3.2)));
-        assertEquals("3.2(12) -> 3", 3, IntegerNumberUtils.intValue(new Float(
-                3.2), 12));
+        assertEquals("3.2 -> 3", 3, IntegerNumberUtils.intValue(Float.valueOf(3.2f)));
+        assertEquals("3.2(12) -> 3", 3, IntegerNumberUtils.intValue(Float.valueOf(3.2f), 12));
         assertEquals("3.99 -> 3", 3, IntegerNumberUtils
-                .intValue(new Float(3.99)));
-        assertEquals("3.99(12) -> 3", 3, IntegerNumberUtils.intValue(new Float(
-                3.99), 12));
+                .intValue(Float.valueOf(3.99f)));
+        assertEquals("3.99(12) -> 3", 3, IntegerNumberUtils.intValue(Float.valueOf(3.99f), 12));
 
         assertEquals("3000000 -> 3000000", 3000000, IntegerNumberUtils
-                .intValue(new Float(3000000)));
+                .intValue(Float.valueOf(3000000)));
         assertEquals("3000000(12) -> 3000000", 3000000, IntegerNumberUtils
-                .intValue(new Float(3000000), 12));
+                .intValue(Float.valueOf(3000000), 12));
     }
 
     public void testSimpleLongValue() {
@@ -71,17 +69,16 @@ public class UtilTest extends TestCase {
         assertEquals("3 -> 3", 3, LongNumberUtils.longValue(Long.valueOf(3)));
         assertEquals("3(12) -> 3", 3, LongNumberUtils
                 .longValue(Long.valueOf(3), 12));
-        assertEquals("3.2 -> 3", 3, LongNumberUtils.longValue(new Float(3.2)));
+        assertEquals("3.2 -> 3", 3, LongNumberUtils.longValue(Float.valueOf(3.2f)));
         assertEquals("3.2(12) -> 3", 3, LongNumberUtils.longValue(
-                new Float(3.2), 12));
-        assertEquals("3.99 -> 3", 3, LongNumberUtils.longValue(new Float(3.99)));
-        assertEquals("3.99(12) -> 3", 3, LongNumberUtils.longValue(new Float(
-                3.99), 12));
+                Float.valueOf(3.2f), 12));
+        assertEquals("3.99 -> 3", 3, LongNumberUtils.longValue(Float.valueOf(3.99f)));
+        assertEquals("3.99(12) -> 3", 3, LongNumberUtils.longValue(Float.valueOf(3.99f), 12));
 
         assertEquals("3000000 -> 3000000", 3000000, LongNumberUtils
-                .longValue(new Float(3000000)));
+                .longValue(Float.valueOf(3000000)));
         assertEquals("3000000(12) -> 3000000", 3000000, LongNumberUtils
-                .longValue(new Float(3000000), 12));
+                .longValue(Float.valueOf(3000000), 12));
     }
 
     public void testSimpleDateValue() {
